@@ -6,18 +6,15 @@ using System.Threading.Tasks;
 
 namespace Students 
 {
-    class Student : IComparable<Student>
+    class Student : IComparable<Student>, ICloneable
     {
         public Student()
         {
-            m_Name = new StringBuilder();
-            m_Surname = new StringBuilder();
-            m_LastName = new StringBuilder();
             m_BirthYear = 0;
             m_Mark = 0.0f;
         }
 
-        public StringBuilder name
+        public string name
         {
             get
             {
@@ -25,11 +22,14 @@ namespace Students
             }
             set
             {
-                m_Name = value;
+                if (value != null)
+                {
+                    m_Name = value;
+                }
             }
         }
 
-        public StringBuilder surname
+        public string surname
         {
             get
             {
@@ -37,11 +37,14 @@ namespace Students
             }
             set
             {
-                m_Surname = value;
+                if (value != null)
+                {
+                    m_Surname = value;
+                }
             }
         }
 
-        public StringBuilder lastname
+        public string lastname
         {
             get
             {
@@ -49,7 +52,10 @@ namespace Students
             }
             set
             {
-                m_LastName = value;
+                if (value != null)
+                {
+                    m_LastName = value;
+                }
             }
         }
 
@@ -83,12 +89,12 @@ namespace Students
             {
                 return true;
             }
-            return ((object)firstStudent == null || (object)secondStudent == null) ? false : Student.compareStudens(firstStudent, secondStudent) == 0;
+            return Student.compareStudens(firstStudent, secondStudent) == 0;
         }
 
         public static bool operator!=(Student firstStudent, Student secondStudent)
         {
-            return (Object.ReferenceEquals(firstStudent, secondStudent) || (object)firstStudent == null || (object)secondStudent == null) ? false : Student.compareStudens(firstStudent, secondStudent) != 0;
+            return Object.ReferenceEquals(firstStudent, secondStudent) ? false : Student.compareStudens(firstStudent, secondStudent) != 0;
         }
 
         public static bool operator>=(Student firstStudent, Student secondStudent)
@@ -97,7 +103,7 @@ namespace Students
             {
                 return true;
             }
-            return ((object)firstStudent == null || (object)secondStudent == null) ? false : Student.compareStudens(firstStudent, secondStudent) >= 0;
+            return Student.compareStudens(firstStudent, secondStudent) >= 0;
         }
 
         public static bool operator<=(Student firstStudent, Student secondStudent)
@@ -106,17 +112,17 @@ namespace Students
             {
                 return true;
             }
-            return ((object)firstStudent == null || (object)secondStudent == null) ? false : Student.compareStudens(firstStudent, secondStudent) <= 0;
+            return Student.compareStudens(firstStudent, secondStudent) <= 0;
         }
 
         public static bool operator>(Student firstStudent, Student secondStudent)
         {
-            return (Object.ReferenceEquals(firstStudent, secondStudent) || (object)firstStudent == null || (object)secondStudent == null) ? false : Student.compareStudens(firstStudent, secondStudent) > 0;
+            return Object.ReferenceEquals(firstStudent, secondStudent) ? false : Student.compareStudens(firstStudent, secondStudent) > 0;
         }
 
         public static bool operator<(Student firstStudent, Student secondStudent)
         {
-            return (Object.ReferenceEquals(firstStudent, secondStudent) || (object)firstStudent == null || (object)secondStudent == null) ? false : Student.compareStudens(firstStudent, secondStudent) < 0;
+            return Object.ReferenceEquals(firstStudent, secondStudent) ? false : Student.compareStudens(firstStudent, secondStudent) < 0;
         }
 
         public override bool Equals(object obj)
@@ -146,20 +152,46 @@ namespace Students
 
         private static int compareStudens(Student firstStudent, Student secondStudent)
         {
-            int result = firstStudent.m_Surname.ToString().CompareTo(secondStudent.m_Surname.ToString());
+            if (Object.ReferenceEquals(firstStudent, null) && Object.ReferenceEquals(secondStudent, null))
+            {
+                return 0;
+            }
+            else if (Object.ReferenceEquals(firstStudent, null) && !Object.ReferenceEquals(secondStudent, null))
+            {
+                return -1;
+            }
+            else if (!Object.ReferenceEquals(firstStudent, null) && Object.ReferenceEquals(secondStudent, null))
+            {
+                return 1;
+            }
+
+            int result = firstStudent.m_Surname.CompareTo(secondStudent.m_Surname);
             if (result == 0)
             {
-                result = firstStudent.m_Name.ToString().CompareTo(secondStudent.m_Name.ToString());
+                result = firstStudent.m_Name.CompareTo(secondStudent.m_Name);
                 if (result == 0)
                 {
-                    return firstStudent.m_LastName.ToString().CompareTo(secondStudent.m_LastName.ToString());
+                    return firstStudent.m_LastName.CompareTo(secondStudent.m_LastName);
                 }
             }
             return result;
         }
-        private StringBuilder m_Name;
-        private StringBuilder m_Surname;
-        private StringBuilder m_LastName;
+
+        public object Clone()
+        {
+            Student newStudent = new Student();
+            newStudent.surname = m_Surname;
+            newStudent.name = m_Name;
+            newStudent.lastname = m_LastName;
+            newStudent.birthYear = m_BirthYear;
+            newStudent.mark = m_Mark;
+
+            return newStudent;
+        }
+
+        private string m_Name;
+        private string m_Surname;
+        private string m_LastName;
         private short m_BirthYear;
         private float m_Mark;
     }
