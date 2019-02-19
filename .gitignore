@@ -1,0 +1,8 @@
+Debug
+Release
+bin/
+obj/
+.vs
+*VC.*
+ipch
+*.aps
