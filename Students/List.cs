@@ -119,74 +119,83 @@ namespace Students
 
         public void pushFront(NODETYPE data)
         {
-            ListNode newPtr = new ListNode(data);
-            if (m_FirstPtr != null)
+            if (!Object.ReferenceEquals(data, null))
             {
-                m_FirstPtr.prevPtr.nextPtr = newPtr;
-                newPtr.prevPtr = m_FirstPtr.prevPtr;
+                ListNode newPtr = new ListNode(data);
+                if (m_FirstPtr != null)
+                {
+                    m_FirstPtr.prevPtr.nextPtr = newPtr;
+                    newPtr.prevPtr = m_FirstPtr.prevPtr;
+                }
+                else
+                {
+                    m_CurrentNodePtr = m_FirstPtr = newPtr;
+                }
+                newPtr.nextPtr = m_FirstPtr;
+                m_FirstPtr.prevPtr = newPtr;
+                m_FirstPtr = newPtr;
+                ++m_Size;
             }
-            else
-            {
-                m_CurrentNodePtr = m_FirstPtr = newPtr;
-            }
-            newPtr.nextPtr = m_FirstPtr;
-            m_FirstPtr.prevPtr = newPtr;
-            m_FirstPtr = newPtr;
-            ++m_Size;
         }
 
         public void pushBack(NODETYPE data)
         {
-            ListNode newPtr = new ListNode(data);
-            if (m_FirstPtr != null)
+            if (!Object.ReferenceEquals(data, null))
             {
-                m_FirstPtr.prevPtr.nextPtr = newPtr;
-                newPtr.prevPtr = m_FirstPtr.prevPtr;
+                ListNode newPtr = new ListNode(data);
+                if (m_FirstPtr != null)
+                {
+                    m_FirstPtr.prevPtr.nextPtr = newPtr;
+                    newPtr.prevPtr = m_FirstPtr.prevPtr;
+                }
+                else
+                {
+                    m_CurrentNodePtr = m_FirstPtr = newPtr;
+                }
+                newPtr.nextPtr = m_FirstPtr;
+                m_FirstPtr.prevPtr = newPtr;
+                ++m_Size;
             }
-            else
-            {
-                m_CurrentNodePtr = m_FirstPtr = newPtr;
-            }
-            newPtr.nextPtr = m_FirstPtr;
-            m_FirstPtr.prevPtr = newPtr;
-            ++m_Size;
         }
 
         public void pushInSortList(NODETYPE data)
         {
-            if (m_FirstPtr == null || data.CompareTo(m_FirstPtr.data) <= 0)
+            if (!Object.ReferenceEquals(data, null))
             {
-                pushFront(data);
-            }
-            else if (data.CompareTo(m_FirstPtr.prevPtr.data) >= 0)
-            {
-                pushBack(data);
-            }
-            else
-            {
-                ListNode newPtr = new ListNode(data);
-                ListNode currentPtr = m_FirstPtr;
-
-                do
+                if (m_FirstPtr == null || data.CompareTo(m_FirstPtr.data) <= 0)
                 {
-                    if (newPtr.data.CompareTo(currentPtr.data) <= 0)
+                    pushFront(data);
+                }
+                else if (data.CompareTo(m_FirstPtr.prevPtr.data) >= 0)
+                {
+                    pushBack(data);
+                }
+                else
+                {
+                    ListNode newPtr = new ListNode(data);
+                    ListNode currentPtr = m_FirstPtr;
+
+                    do
                     {
-                        ListNode tempPtr = currentPtr.prevPtr;
-                        tempPtr.nextPtr = newPtr;
-                        newPtr.prevPtr = tempPtr;
-                        newPtr.nextPtr = currentPtr;
-                        currentPtr.prevPtr = newPtr;
-                        ++m_Size;
-                        return;
-                    }
-                    currentPtr = currentPtr.nextPtr;
-                } while (currentPtr != m_FirstPtr);
+                        if (newPtr.data.CompareTo(currentPtr.data) <= 0)
+                        {
+                            ListNode tempPtr = currentPtr.prevPtr;
+                            tempPtr.nextPtr = newPtr;
+                            newPtr.prevPtr = tempPtr;
+                            newPtr.nextPtr = currentPtr;
+                            currentPtr.prevPtr = newPtr;
+                            ++m_Size;
+                            return;
+                        }
+                        currentPtr = currentPtr.nextPtr;
+                    } while (currentPtr != m_FirstPtr);
+                }
             }
         }
 
         public bool deleteElement(NODETYPE data)
         {
-            if (m_FirstPtr != null)
+            if (m_FirstPtr != null && !Object.ReferenceEquals(data, null))
             {
                 ListNode currentPtr = m_FirstPtr;
 
@@ -217,7 +226,7 @@ namespace Students
 
         public bool findValue(NODETYPE data)
         {
-            if (data != null)
+            if (m_FirstPtr != null && !Object.ReferenceEquals(data, null))
             {
                 ListNode currentPtr = m_FirstPtr;
                 do
@@ -420,7 +429,7 @@ namespace Students
 
         public bool isNotGetEnd()
         {
-            return m_CurrentNodePtr.nextPtr != m_FirstPtr;
+            return m_FirstPtr != null && m_CurrentNodePtr.nextPtr != m_FirstPtr;
         }
 
         public void setStart()
