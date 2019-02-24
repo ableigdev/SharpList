@@ -41,6 +41,24 @@ namespace Students
             foreach (var curElem in listNew.chooseOrder(true))
                 Console.WriteLine("{0:D}", curElem);
 
+            NameList<int> nameList = new NameList<int>();
+            nameList.nameList = "test";
+
+            for (int j = 0; j < 5; ++j)
+            {
+                nameList.pushBack(j);
+            }
+
+            Console.WriteLine("\nSource nameList:");
+            foreach (var curElem in nameList.chooseOrder(false))
+                Console.WriteLine("{0:D}", curElem);
+
+            NameList<int> cloneNameList = (NameList<int>)((ICloneable)nameList).Clone();
+
+            Console.WriteLine("\nCopy nameList:");
+            foreach (var curElem in cloneNameList.chooseOrder(false))
+                Console.WriteLine("{0:D}", curElem);
+
             //Student student = new Student();
             //Student student2 = new Student();
 
