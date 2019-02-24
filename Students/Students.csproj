@@ -57,6 +57,8 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -65,14 +67,79 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddSubjectAndMarkForStudent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddSubjectAndMarkForStudent.Designer.cs">
+      <DependentUpon>AddSubjectAndMarkForStudent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InputName.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InputName.Designer.cs">
+      <DependentUpon>InputName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InputStudent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InputStudent.Designer.cs">
+      <DependentUpon>InputStudent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InputSubjectsAndMarks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InputSubjectsAndMarks.Designer.cs">
+      <DependentUpon>InputSubjectsAndMarks.cs</DependentUpon>
+    </Compile>
     <Compile Include="List.cs" />
     <Compile Include="NameList.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SelectAction.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SelectAction.Designer.cs">
+      <DependentUpon>SelectAction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ShowSubjectsAndMarks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShowSubjectsAndMarks.Designer.cs">
+      <DependentUpon>ShowSubjectsAndMarks.cs</DependentUpon>
+    </Compile>
     <Compile Include="Student.cs" />
+    <Compile Include="StudentsGUIDlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StudentsGUIDlg.Designer.cs">
+      <DependentUpon>StudentsGUIDlg.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="AddSubjectAndMarkForStudent.resx">
+      <DependentUpon>AddSubjectAndMarkForStudent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InputName.resx">
+      <DependentUpon>InputName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InputStudent.resx">
+      <DependentUpon>InputStudent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InputSubjectsAndMarks.resx">
+      <DependentUpon>InputSubjectsAndMarks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SelectAction.resx">
+      <DependentUpon>SelectAction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShowSubjectsAndMarks.resx">
+      <DependentUpon>ShowSubjectsAndMarks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StudentsGUIDlg.resx">
+      <DependentUpon>StudentsGUIDlg.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
