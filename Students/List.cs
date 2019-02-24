@@ -444,7 +444,7 @@ namespace Students
 
         public static bool operator !(List<NODETYPE> list)
         {
-            return list.m_FirstPtr != null;
+            return list != null && list.m_FirstPtr != null;
         }
 
         public static List<NODETYPE> operator++(List<NODETYPE> list)
@@ -514,7 +514,7 @@ namespace Students
 
         int IComparable<List<NODETYPE>>.CompareTo(List<NODETYPE> list)
         {
-            return m_Size > list.m_Size ? 1 : m_Size == list.m_Size ? 0 : -1;
+            return list != null ? (m_Size > list.m_Size ? 1 : m_Size == list.m_Size ? 0 : -1) : 1;
         }
 
         public override bool Equals(object obj)
@@ -530,15 +530,36 @@ namespace Students
         public object Clone()
         {
             List<NODETYPE> newList = new List<NODETYPE>();
+            ListNode currNode, prevNode;
 
             if (isNotEmpty())
             {
-                ListNode currentPtr = m_FirstPtr;
-                do
+                newList.m_Size = m_Size;
+                prevNode = newList.m_FirstPtr = new ListNode(m_FirstPtr.data);
+                currNode = m_FirstPtr.nextPtr;
+
+                while (currNode != m_CurrentNodePtr)
                 {
-                    newList.pushBack(currentPtr.data);
-                    currentPtr = currentPtr.nextPtr;
-                } while (currentPtr != m_FirstPtr);
+                    prevNode = prevNode.nextPtr = newList.m_FirstPtr.prevPtr = new ListNode(currNode.data, newList.m_FirstPtr, prevNode);
+                    currNode = currNode.nextPtr;
+                }
+
+                if (currNode == m_FirstPtr)
+                {
+                    newList.m_CurrentNodePtr = newList.m_FirstPtr;
+                    return newList;
+                }
+                else
+                {
+                    newList.m_CurrentNodePtr = prevNode = prevNode.nextPtr = newList.m_FirstPtr.prevPtr = new ListNode(currNode.data, newList.m_FirstPtr, prevNode);
+                    currNode = currNode.nextPtr;
+                }
+
+                while (currNode != m_FirstPtr)
+                {
+                    prevNode = prevNode.nextPtr = newList.m_FirstPtr.prevPtr = new ListNode(currNode.data, newList.m_FirstPtr, prevNode);
+                    currNode = currNode.nextPtr;
+                }
             }
             return newList;
         }
