@@ -514,7 +514,7 @@ namespace Students
 
         int IComparable<List<NODETYPE>>.CompareTo(List<NODETYPE> list)
         {
-            return list != null ? (m_Size > list.m_Size ? 1 : m_Size == list.m_Size ? 0 : -1) : 1;
+            return !Object.ReferenceEquals(list, null) ? (m_Size > list.m_Size ? 1 : m_Size == list.m_Size ? 0 : -1) : 1;
         }
 
         public override bool Equals(object obj)
@@ -524,12 +524,12 @@ namespace Students
 
         public bool Equals(List<NODETYPE> list)
         {
-            return list == null ? false : m_Size == list.m_Size;
+            return Object.ReferenceEquals(list, null) ? false : m_Size == list.m_Size;
         }
 
-        public object Clone()
+        public virtual object Clone()
         {
-            List<NODETYPE> newList = new List<NODETYPE>();
+            List<NODETYPE> newList = createInstanceForClone();
             ListNode currNode, prevNode;
 
             if (isNotEmpty())
@@ -562,6 +562,11 @@ namespace Students
                 }
             }
             return newList;
+        }
+
+        protected virtual List<NODETYPE> createInstanceForClone()
+        {
+            return new List<NODETYPE>();
         }
 
     }
