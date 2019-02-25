@@ -137,45 +137,33 @@ namespace Students
 
         public override int GetHashCode()
         {
-            int hCodeSurname = 0;
-            int hCodeName = 0;
-            int hCodeLastname = 0;
-            if (m_Surname.Length > 0 && m_Name.Length > 0 && m_LastName.Length > 0)
+            return generateHash(ref m_Surname) ^ generateHash(ref m_Name) ^ generateHash(ref m_LastName);
+        }
+
+        private int generateHash(ref string stringValue)
+        {
+            int hCode = 0;
+
+            if (stringValue.Length > 0)
             {
                 unsafe
                 {
-                    fixed (char* ptr = m_Surname)
+                    var str = stringValue.ToCharArray();
+                    fixed (char* ptr = &str[0])
                     {
-                        int length = m_Surname.Length;
+                        int length = stringValue.Length;
+                        uint* ptrStr = (uint*)(&ptr[0]);
 
-                        for (int i = 0; i < length; ++i)
+                        for (int i = 0; i < length >> 1; ++i)
                         {
-                            hCodeSurname ^= (int)ptr[i];
+                            hCode ^= (int)ptrStr[i];
                         }
-                    }
-                    fixed (char* ptr = m_Name)
-                    {
-                        int length = m_Name.Length;
 
-                        for (int i = 0; i < length; ++i)
-                        {
-                            hCodeName ^= (int)ptr[i];
-                        }
+                        return (((uint)(length << 31)) >> 31) == 1 ? hCode ^ (int)(str[length - 1]) : hCode;
                     }
-                    fixed (char* ptr = m_LastName)
-                    {
-                        int length = m_LastName.Length;
-
-                        for (int i = 0; i < length; ++i)
-                        {
-                            hCodeLastname ^= (int)ptr[i];
-                        }
-                    }
-
                 }
             }
-            return hCodeSurname ^ hCodeName ^ hCodeLastname;
-            //return m_Surname.GetHashCode() ^ m_Name.GetHashCode() ^ m_LastName.GetHashCode();
+            return hCode;
         }
 
         public override string ToString()
@@ -190,15 +178,17 @@ namespace Students
 
         private static int compareStudens(Student firstStudent, Student secondStudent)
         {
-            if (Object.ReferenceEquals(firstStudent, null) && Object.ReferenceEquals(secondStudent, null))
+            bool resultFirstStudent = Object.ReferenceEquals(firstStudent, null);
+            bool resultSecondStudent = Object.ReferenceEquals(secondStudent, null);
+            if (resultFirstStudent && resultSecondStudent)
             {
                 return 0;
             }
-            else if (Object.ReferenceEquals(firstStudent, null) && !Object.ReferenceEquals(secondStudent, null))
+            else if (resultFirstStudent && !resultSecondStudent)
             {
                 return -1;
             }
-            else if (!Object.ReferenceEquals(firstStudent, null) && Object.ReferenceEquals(secondStudent, null))
+            else if (!resultFirstStudent && resultSecondStudent)
             {
                 return 1;
             }
