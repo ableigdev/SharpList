@@ -32,60 +32,56 @@ namespace Students
 
         private static int checkLists(NameList<NODETYPE> leftList, NameList<NODETYPE> rightList)
         {
-            if (Object.ReferenceEquals(leftList, null) && Object.ReferenceEquals(rightList, null))
+            bool resultLeftList = Object.ReferenceEquals(leftList, null);
+            bool resultRightList = Object.ReferenceEquals(rightList, null);
+            if (resultLeftList && resultRightList)
             {
                 return 0;
             }
-            else if (!Object.ReferenceEquals(leftList, null) && Object.ReferenceEquals(rightList, null))
+            else if (!resultLeftList && resultRightList)
             {
                 return 1;
             }
-            else if (Object.ReferenceEquals(leftList, null) && !Object.ReferenceEquals(rightList, null))
+            else if (resultLeftList && !resultRightList)
             {
                 return -1;
             }
-            return 2;
+            return leftList.m_NameList.CompareTo(rightList.m_NameList);
         }
 
         public static bool operator==(NameList<NODETYPE> leftList, NameList<NODETYPE> rightList)
         {
-            int result = checkLists(leftList, rightList);
-            return result == 0 ? true : result != 2 ? false : leftList.m_NameList.Equals(rightList.m_NameList);
+            return checkLists(leftList, rightList) == 0;
         }
 
         public static bool operator!=(NameList<NODETYPE> leftList, NameList<NODETYPE> rightList)
         {
-            return checkLists(leftList, rightList) != 2 ? false : leftList.m_NameList.Equals(rightList.m_NameList);
+            return checkLists(leftList, rightList) != 0;
         }
 
         public static bool operator>=(NameList<NODETYPE> leftList, NameList<NODETYPE> rightList)
         {
-            int result = checkLists(leftList, rightList);
-            return result >= 0 && result <= 1 ? true : result < 0 ? false : leftList.m_NameList.Equals(rightList.m_NameList);
+            return checkLists(leftList, rightList) >= 0;
         }
 
         public static bool operator<=(NameList<NODETYPE> leftList, NameList<NODETYPE> rightList)
         {
-            int result = checkLists(leftList, rightList);
-            return result <= 0 ? true : result == 1 ? false : leftList.m_NameList.Equals(rightList.m_NameList);
+            return checkLists(leftList, rightList) <= 0;
         }
 
         public static bool operator>(NameList<NODETYPE> leftList, NameList<NODETYPE> rightList)
         {
-            int result = checkLists(leftList, rightList);
-            return result == 1 ? true : result <= 0 ? false : leftList.m_NameList.Equals(rightList.m_NameList);
+            return checkLists(leftList, rightList) > 0;
         }
 
         public static bool operator<(NameList<NODETYPE> leftList, NameList<NODETYPE> rightList)
         {
-            int result = checkLists(leftList, rightList);
-            return result == -1 ? true : result >= 0 && result <= 1 ? false : leftList.m_NameList.Equals(rightList.m_NameList);
+            return checkLists(leftList, rightList) < 0;
         }
 
         int IComparable<NameList<NODETYPE>>.CompareTo(NameList<NODETYPE> list)
         {
-            int result = checkLists(this, list);
-            return result != 2 ? result : this.m_NameList.CompareTo(list.m_NameList);
+            return checkLists(this, list);
         }
 
         public override bool Equals(object obj)
@@ -100,7 +96,7 @@ namespace Students
 
         public override object Clone()
         {
-            var newList = (NameList<NODETYPE>)base.Clone();
+            NameList<NODETYPE> newList = (NameList<NODETYPE>)base.Clone();
             newList.m_NameList = this.m_NameList;
             return newList;
         }
