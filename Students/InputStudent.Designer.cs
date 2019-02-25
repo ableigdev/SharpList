@@ -29,22 +29,22 @@
         private void InitializeComponent()
         {
             this.GroupBox_Current_Group = new System.Windows.Forms.GroupBox();
-            this.GroupBox_Add_Student_Info = new System.Windows.Forms.GroupBox();
-            this.Label_Choose_Group_To_Add = new System.Windows.Forms.Label();
             this.ComboBox_Groups = new System.Windows.Forms.ComboBox();
-            this.Label_Surname = new System.Windows.Forms.Label();
-            this.Label_Name = new System.Windows.Forms.Label();
-            this.Label_Lastname = new System.Windows.Forms.Label();
-            this.Label_Birth_Year = new System.Windows.Forms.Label();
-            this.Label_Average_Mark = new System.Windows.Forms.Label();
-            this.TextBox_Surname = new System.Windows.Forms.TextBox();
-            this.TextBox_Name = new System.Windows.Forms.TextBox();
-            this.TextBox_Lastname = new System.Windows.Forms.TextBox();
-            this.TextBox_Birth_Name = new System.Windows.Forms.TextBox();
-            this.TextBox_Average_Mark = new System.Windows.Forms.TextBox();
-            this.Button_Next = new System.Windows.Forms.Button();
-            this.Button_OK = new System.Windows.Forms.Button();
+            this.Label_Choose_Group_To_Add = new System.Windows.Forms.Label();
+            this.GroupBox_Add_Student_Info = new System.Windows.Forms.GroupBox();
             this.Button_Cancel = new System.Windows.Forms.Button();
+            this.Button_OK = new System.Windows.Forms.Button();
+            this.Button_Next = new System.Windows.Forms.Button();
+            this.TextBox_Average_Mark = new System.Windows.Forms.TextBox();
+            this.TextBox_Birth_Name = new System.Windows.Forms.TextBox();
+            this.TextBox_Lastname = new System.Windows.Forms.TextBox();
+            this.TextBox_Name = new System.Windows.Forms.TextBox();
+            this.TextBox_Surname = new System.Windows.Forms.TextBox();
+            this.Label_Average_Mark = new System.Windows.Forms.Label();
+            this.Label_Birth_Year = new System.Windows.Forms.Label();
+            this.Label_Lastname = new System.Windows.Forms.Label();
+            this.Label_Name = new System.Windows.Forms.Label();
+            this.Label_Surname = new System.Windows.Forms.Label();
             this.GroupBox_Current_Group.SuspendLayout();
             this.GroupBox_Add_Student_Info.SuspendLayout();
             this.SuspendLayout();
@@ -59,6 +59,24 @@
             this.GroupBox_Current_Group.TabIndex = 0;
             this.GroupBox_Current_Group.TabStop = false;
             this.GroupBox_Current_Group.Text = "Current Group";
+            // 
+            // ComboBox_Groups
+            // 
+            this.ComboBox_Groups.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ComboBox_Groups.FormattingEnabled = true;
+            this.ComboBox_Groups.Location = new System.Drawing.Point(250, 19);
+            this.ComboBox_Groups.Name = "ComboBox_Groups";
+            this.ComboBox_Groups.Size = new System.Drawing.Size(157, 21);
+            this.ComboBox_Groups.TabIndex = 1;
+            // 
+            // Label_Choose_Group_To_Add
+            // 
+            this.Label_Choose_Group_To_Add.AutoSize = true;
+            this.Label_Choose_Group_To_Add.Location = new System.Drawing.Point(6, 22);
+            this.Label_Choose_Group_To_Add.Name = "Label_Choose_Group_To_Add";
+            this.Label_Choose_Group_To_Add.Size = new System.Drawing.Size(167, 13);
+            this.Label_Choose_Group_To_Add.TabIndex = 0;
+            this.Label_Choose_Group_To_Add.Text = "Choose Group to add the student:";
             // 
             // GroupBox_Add_Student_Info
             // 
@@ -82,111 +100,14 @@
             this.GroupBox_Add_Student_Info.TabStop = false;
             this.GroupBox_Add_Student_Info.Text = "Enter Student Info";
             // 
-            // Label_Choose_Group_To_Add
+            // Button_Cancel
             // 
-            this.Label_Choose_Group_To_Add.AutoSize = true;
-            this.Label_Choose_Group_To_Add.Location = new System.Drawing.Point(6, 22);
-            this.Label_Choose_Group_To_Add.Name = "Label_Choose_Group_To_Add";
-            this.Label_Choose_Group_To_Add.Size = new System.Drawing.Size(167, 13);
-            this.Label_Choose_Group_To_Add.TabIndex = 0;
-            this.Label_Choose_Group_To_Add.Text = "Choose Group to add the student:";
-            // 
-            // ComboBox_Groups
-            // 
-            this.ComboBox_Groups.FormattingEnabled = true;
-            this.ComboBox_Groups.Location = new System.Drawing.Point(250, 19);
-            this.ComboBox_Groups.Name = "ComboBox_Groups";
-            this.ComboBox_Groups.Size = new System.Drawing.Size(157, 21);
-            this.ComboBox_Groups.TabIndex = 1;
-            // 
-            // Label_Surname
-            // 
-            this.Label_Surname.AutoSize = true;
-            this.Label_Surname.Location = new System.Drawing.Point(6, 22);
-            this.Label_Surname.Name = "Label_Surname";
-            this.Label_Surname.Size = new System.Drawing.Size(52, 13);
-            this.Label_Surname.TabIndex = 0;
-            this.Label_Surname.Text = "Surname:";
-            // 
-            // Label_Name
-            // 
-            this.Label_Name.AutoSize = true;
-            this.Label_Name.Location = new System.Drawing.Point(6, 48);
-            this.Label_Name.Name = "Label_Name";
-            this.Label_Name.Size = new System.Drawing.Size(38, 13);
-            this.Label_Name.TabIndex = 3;
-            this.Label_Name.Text = "Name:";
-            // 
-            // Label_Lastname
-            // 
-            this.Label_Lastname.AutoSize = true;
-            this.Label_Lastname.Location = new System.Drawing.Point(6, 74);
-            this.Label_Lastname.Name = "Label_Lastname";
-            this.Label_Lastname.Size = new System.Drawing.Size(56, 13);
-            this.Label_Lastname.TabIndex = 5;
-            this.Label_Lastname.Text = "Lastname:";
-            // 
-            // Label_Birth_Year
-            // 
-            this.Label_Birth_Year.AutoSize = true;
-            this.Label_Birth_Year.Location = new System.Drawing.Point(6, 100);
-            this.Label_Birth_Year.Name = "Label_Birth_Year";
-            this.Label_Birth_Year.Size = new System.Drawing.Size(56, 13);
-            this.Label_Birth_Year.TabIndex = 7;
-            this.Label_Birth_Year.Text = "Birth Year:";
-            // 
-            // Label_Average_Mark
-            // 
-            this.Label_Average_Mark.AutoSize = true;
-            this.Label_Average_Mark.Location = new System.Drawing.Point(224, 100);
-            this.Label_Average_Mark.Name = "Label_Average_Mark";
-            this.Label_Average_Mark.Size = new System.Drawing.Size(77, 13);
-            this.Label_Average_Mark.TabIndex = 9;
-            this.Label_Average_Mark.Text = "Average Mark:";
-            // 
-            // TextBox_Surname
-            // 
-            this.TextBox_Surname.Location = new System.Drawing.Point(110, 19);
-            this.TextBox_Surname.Name = "TextBox_Surname";
-            this.TextBox_Surname.Size = new System.Drawing.Size(297, 20);
-            this.TextBox_Surname.TabIndex = 2;
-            // 
-            // TextBox_Name
-            // 
-            this.TextBox_Name.Location = new System.Drawing.Point(110, 45);
-            this.TextBox_Name.Name = "TextBox_Name";
-            this.TextBox_Name.Size = new System.Drawing.Size(297, 20);
-            this.TextBox_Name.TabIndex = 4;
-            // 
-            // TextBox_Lastname
-            // 
-            this.TextBox_Lastname.Location = new System.Drawing.Point(110, 71);
-            this.TextBox_Lastname.Name = "TextBox_Lastname";
-            this.TextBox_Lastname.Size = new System.Drawing.Size(297, 20);
-            this.TextBox_Lastname.TabIndex = 6;
-            // 
-            // TextBox_Birth_Name
-            // 
-            this.TextBox_Birth_Name.Location = new System.Drawing.Point(110, 97);
-            this.TextBox_Birth_Name.Name = "TextBox_Birth_Name";
-            this.TextBox_Birth_Name.Size = new System.Drawing.Size(100, 20);
-            this.TextBox_Birth_Name.TabIndex = 8;
-            // 
-            // TextBox_Average_Mark
-            // 
-            this.TextBox_Average_Mark.Location = new System.Drawing.Point(307, 97);
-            this.TextBox_Average_Mark.Name = "TextBox_Average_Mark";
-            this.TextBox_Average_Mark.Size = new System.Drawing.Size(100, 20);
-            this.TextBox_Average_Mark.TabIndex = 10;
-            // 
-            // Button_Next
-            // 
-            this.Button_Next.Location = new System.Drawing.Point(9, 133);
-            this.Button_Next.Name = "Button_Next";
-            this.Button_Next.Size = new System.Drawing.Size(75, 23);
-            this.Button_Next.TabIndex = 11;
-            this.Button_Next.Text = "&Next";
-            this.Button_Next.UseVisualStyleBackColor = true;
+            this.Button_Cancel.Location = new System.Drawing.Point(332, 133);
+            this.Button_Cancel.Name = "Button_Cancel";
+            this.Button_Cancel.Size = new System.Drawing.Size(75, 23);
+            this.Button_Cancel.TabIndex = 13;
+            this.Button_Cancel.Text = "&Cancel";
+            this.Button_Cancel.UseVisualStyleBackColor = true;
             // 
             // Button_OK
             // 
@@ -197,14 +118,94 @@
             this.Button_OK.Text = "&OK";
             this.Button_OK.UseVisualStyleBackColor = true;
             // 
-            // Button_Cancel
+            // Button_Next
             // 
-            this.Button_Cancel.Location = new System.Drawing.Point(332, 133);
-            this.Button_Cancel.Name = "Button_Cancel";
-            this.Button_Cancel.Size = new System.Drawing.Size(75, 23);
-            this.Button_Cancel.TabIndex = 13;
-            this.Button_Cancel.Text = "&Cancel";
-            this.Button_Cancel.UseVisualStyleBackColor = true;
+            this.Button_Next.Location = new System.Drawing.Point(9, 133);
+            this.Button_Next.Name = "Button_Next";
+            this.Button_Next.Size = new System.Drawing.Size(75, 23);
+            this.Button_Next.TabIndex = 11;
+            this.Button_Next.Text = "&Next";
+            this.Button_Next.UseVisualStyleBackColor = true;
+            // 
+            // TextBox_Average_Mark
+            // 
+            this.TextBox_Average_Mark.Location = new System.Drawing.Point(307, 97);
+            this.TextBox_Average_Mark.Name = "TextBox_Average_Mark";
+            this.TextBox_Average_Mark.Size = new System.Drawing.Size(100, 20);
+            this.TextBox_Average_Mark.TabIndex = 10;
+            // 
+            // TextBox_Birth_Name
+            // 
+            this.TextBox_Birth_Name.Location = new System.Drawing.Point(110, 97);
+            this.TextBox_Birth_Name.Name = "TextBox_Birth_Name";
+            this.TextBox_Birth_Name.Size = new System.Drawing.Size(100, 20);
+            this.TextBox_Birth_Name.TabIndex = 8;
+            // 
+            // TextBox_Lastname
+            // 
+            this.TextBox_Lastname.Location = new System.Drawing.Point(110, 71);
+            this.TextBox_Lastname.Name = "TextBox_Lastname";
+            this.TextBox_Lastname.Size = new System.Drawing.Size(297, 20);
+            this.TextBox_Lastname.TabIndex = 6;
+            // 
+            // TextBox_Name
+            // 
+            this.TextBox_Name.Location = new System.Drawing.Point(110, 45);
+            this.TextBox_Name.Name = "TextBox_Name";
+            this.TextBox_Name.Size = new System.Drawing.Size(297, 20);
+            this.TextBox_Name.TabIndex = 4;
+            // 
+            // TextBox_Surname
+            // 
+            this.TextBox_Surname.Location = new System.Drawing.Point(110, 19);
+            this.TextBox_Surname.Name = "TextBox_Surname";
+            this.TextBox_Surname.Size = new System.Drawing.Size(297, 20);
+            this.TextBox_Surname.TabIndex = 2;
+            // 
+            // Label_Average_Mark
+            // 
+            this.Label_Average_Mark.AutoSize = true;
+            this.Label_Average_Mark.Location = new System.Drawing.Point(224, 100);
+            this.Label_Average_Mark.Name = "Label_Average_Mark";
+            this.Label_Average_Mark.Size = new System.Drawing.Size(77, 13);
+            this.Label_Average_Mark.TabIndex = 9;
+            this.Label_Average_Mark.Text = "Average Mark:";
+            // 
+            // Label_Birth_Year
+            // 
+            this.Label_Birth_Year.AutoSize = true;
+            this.Label_Birth_Year.Location = new System.Drawing.Point(6, 100);
+            this.Label_Birth_Year.Name = "Label_Birth_Year";
+            this.Label_Birth_Year.Size = new System.Drawing.Size(56, 13);
+            this.Label_Birth_Year.TabIndex = 7;
+            this.Label_Birth_Year.Text = "Birth Year:";
+            // 
+            // Label_Lastname
+            // 
+            this.Label_Lastname.AutoSize = true;
+            this.Label_Lastname.Location = new System.Drawing.Point(6, 74);
+            this.Label_Lastname.Name = "Label_Lastname";
+            this.Label_Lastname.Size = new System.Drawing.Size(56, 13);
+            this.Label_Lastname.TabIndex = 5;
+            this.Label_Lastname.Text = "Lastname:";
+            // 
+            // Label_Name
+            // 
+            this.Label_Name.AutoSize = true;
+            this.Label_Name.Location = new System.Drawing.Point(6, 48);
+            this.Label_Name.Name = "Label_Name";
+            this.Label_Name.Size = new System.Drawing.Size(38, 13);
+            this.Label_Name.TabIndex = 3;
+            this.Label_Name.Text = "Name:";
+            // 
+            // Label_Surname
+            // 
+            this.Label_Surname.AutoSize = true;
+            this.Label_Surname.Location = new System.Drawing.Point(6, 22);
+            this.Label_Surname.Name = "Label_Surname";
+            this.Label_Surname.Size = new System.Drawing.Size(52, 13);
+            this.Label_Surname.TabIndex = 0;
+            this.Label_Surname.Text = "Surname:";
             // 
             // InputStudent
             // 
