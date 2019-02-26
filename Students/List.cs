@@ -92,7 +92,7 @@ namespace Students
             }
             set
             {
-                if (m_CurrentNodePtr != null)
+                if (m_CurrentNodePtr != null && !Object.ReferenceEquals(value, null))
                 {
                     m_CurrentNodePtr.data = value;
                 }
@@ -201,7 +201,7 @@ namespace Students
 
                 do
                 {
-                    if (currentPtr.data.Equals(data))
+                    if (currentPtr.data.CompareTo(data) == 0)
                     {
                         detachNode(currentPtr);
 
@@ -231,7 +231,7 @@ namespace Students
                 ListNode currentPtr = m_FirstPtr;
                 do
                 {
-                    if (data.Equals(currentPtr.data))
+                    if (data.CompareTo(currentPtr.data) == 0)
                     {
                         return true;
                     }
