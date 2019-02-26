@@ -23,7 +23,7 @@ namespace Students
             }
             set
             {
-                if (value != null)
+                if (!Object.ReferenceEquals(value, null))
                 {
                     m_NameList = value;
                 }
@@ -32,21 +32,9 @@ namespace Students
 
         private static int checkLists(NameList<NODETYPE> leftList, NameList<NODETYPE> rightList)
         {
-            bool resultLeftList = Object.ReferenceEquals(leftList, null);
             bool resultRightList = Object.ReferenceEquals(rightList, null);
-            if (resultLeftList && resultRightList)
-            {
-                return 0;
-            }
-            else if (!resultLeftList && resultRightList)
-            {
-                return 1;
-            }
-            else if (resultLeftList && !resultRightList)
-            {
-                return -1;
-            }
-            return leftList.m_NameList.CompareTo(rightList.m_NameList);
+           
+            return Object.ReferenceEquals(leftList, null) ? (resultRightList ? 0 : -1) : (resultRightList ? 1 : leftList.m_NameList.CompareTo(rightList.m_NameList));
         }
 
         public static bool operator==(NameList<NODETYPE> leftList, NameList<NODETYPE> rightList)
