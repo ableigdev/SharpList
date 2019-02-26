@@ -22,7 +22,7 @@ namespace Students
             }
             set
             {
-                if (value != null)
+                if (!Object.ReferenceEquals(value, null))
                 {
                     m_Name = value;
                 }
@@ -37,7 +37,7 @@ namespace Students
             }
             set
             {
-                if (value != null)
+                if (!Object.ReferenceEquals(value, null))
                 {
                     m_Surname = value;
                 }
@@ -52,7 +52,7 @@ namespace Students
             }
             set
             {
-                if (value != null)
+                if (!Object.ReferenceEquals(value, null))
                 {
                     m_LastName = value;
                 }
@@ -137,10 +137,10 @@ namespace Students
 
         public override int GetHashCode()
         {
-            return generateHash(ref m_Surname) ^ generateHash(ref m_Name) ^ generateHash(ref m_LastName);
+            return generateHash(m_Surname) ^ generateHash(m_Name) ^ generateHash(m_LastName);
         }
 
-        private int generateHash(ref string stringValue)
+        private int generateHash(string stringValue)
         {
             int hCode = 0;
 
@@ -154,12 +154,9 @@ namespace Students
                         int length = stringValue.Length;
                         uint* ptrStr = (uint*)(&ptr[0]);
 
-                        for (int i = 0; i < length >> 1; ++i)
-                        {
-                            hCode ^= (int)ptrStr[i];
-                        }
-
-                        return (((uint)(length << 31)) >> 31) == 1 ? hCode ^ (int)(str[length - 1]) : hCode;
+                        for (int i = 0; i < length >> 1; hCode ^= (int)ptrStr[i++]);
+                        
+                        return (length & 1) == 1 ? hCode ^ (int)(str[length - 1]) : hCode;
                     }
                 }
             }
@@ -178,21 +175,13 @@ namespace Students
 
         private static int compareStudens(Student firstStudent, Student secondStudent)
         {
-            bool resultFirstStudent = Object.ReferenceEquals(firstStudent, null);
             bool resultSecondStudent = Object.ReferenceEquals(secondStudent, null);
-            if (resultFirstStudent && resultSecondStudent)
-            {
-                return 0;
-            }
-            else if (resultFirstStudent && !resultSecondStudent)
-            {
-                return -1;
-            }
-            else if (!resultFirstStudent && resultSecondStudent)
-            {
-                return 1;
-            }
 
+            return Object.ReferenceEquals(firstStudent, null) ? (resultSecondStudent ? 0 : -1) : resultSecondStudent ? 1 : compareHelper(firstStudent, secondStudent);
+        }
+
+        private static int compareHelper(Student firstStudent, Student secondStudent)
+        {
             int result = firstStudent.m_Surname.CompareTo(secondStudent.m_Surname);
             if (result == 0)
             {
