@@ -12,26 +12,26 @@ namespace Students
         {
             public ListNode(NODETYPE data)
             {
-                m_Data = checkType(ref data);
+                m_Data = data;
             }
 
             public ListNode(ListNode prevPtr, NODETYPE data)
             {
                 m_PrevPtr = prevPtr;
-                m_Data = checkType(ref data);
+                m_Data = data;
             }
 
             public ListNode(NODETYPE data, ListNode nextPtr)
             {
                 m_NextPtr = nextPtr;
-                m_Data = checkType(ref data);
+                m_Data = data;
             }
 
             public ListNode(NODETYPE data, ListNode nextPtr, ListNode prevPtr)
             {
                 m_NextPtr = nextPtr;
                 m_PrevPtr = prevPtr;
-                m_Data = checkType(ref data);
+                m_Data = Object.ReferenceEquals(data as ValueType, null) ? (NODETYPE)(((ICloneable)data).Clone()) : data;
             }
 
             public NODETYPE data
@@ -68,11 +68,6 @@ namespace Students
                 {
                     m_PrevPtr = value;
                 }
-            }
-
-            private NODETYPE checkType(ref NODETYPE data)
-            {
-                return (Object.ReferenceEquals(data as ValueType, null)) ? (NODETYPE)(((ICloneable)data).Clone()) : data;
             }
 
             private NODETYPE m_Data;
@@ -535,7 +530,9 @@ namespace Students
             if (isNotEmpty())
             {
                 newList.m_Size = m_Size;
-                prevNode = newList.m_FirstPtr = new ListNode(m_FirstPtr.data);
+                prevNode = newList.m_FirstPtr = new ListNode(m_FirstPtr.data, null, null);
+                newList.m_FirstPtr.nextPtr = newList.m_FirstPtr;
+                newList.m_FirstPtr.prevPtr = newList.m_FirstPtr;
                 currNode = m_FirstPtr.nextPtr;
 
                 while (currNode != m_CurrentNodePtr)
