@@ -36,7 +36,7 @@
             this.Button_OK = new System.Windows.Forms.Button();
             this.Button_Next = new System.Windows.Forms.Button();
             this.TextBox_Average_Mark = new System.Windows.Forms.TextBox();
-            this.TextBox_Birth_Name = new System.Windows.Forms.TextBox();
+            this.TextBox_Birth_Year = new System.Windows.Forms.TextBox();
             this.TextBox_Lastname = new System.Windows.Forms.TextBox();
             this.TextBox_Name = new System.Windows.Forms.TextBox();
             this.TextBox_Surname = new System.Windows.Forms.TextBox();
@@ -84,7 +84,7 @@
             this.GroupBox_Add_Student_Info.Controls.Add(this.Button_OK);
             this.GroupBox_Add_Student_Info.Controls.Add(this.Button_Next);
             this.GroupBox_Add_Student_Info.Controls.Add(this.TextBox_Average_Mark);
-            this.GroupBox_Add_Student_Info.Controls.Add(this.TextBox_Birth_Name);
+            this.GroupBox_Add_Student_Info.Controls.Add(this.TextBox_Birth_Year);
             this.GroupBox_Add_Student_Info.Controls.Add(this.TextBox_Lastname);
             this.GroupBox_Add_Student_Info.Controls.Add(this.TextBox_Name);
             this.GroupBox_Add_Student_Info.Controls.Add(this.TextBox_Surname);
@@ -98,7 +98,6 @@
             this.GroupBox_Add_Student_Info.Size = new System.Drawing.Size(413, 169);
             this.GroupBox_Add_Student_Info.TabIndex = 1;
             this.GroupBox_Add_Student_Info.TabStop = false;
-            this.GroupBox_Add_Student_Info.Text = "Enter Student Info";
             // 
             // Button_Cancel
             // 
@@ -108,6 +107,7 @@
             this.Button_Cancel.TabIndex = 13;
             this.Button_Cancel.Text = "&Cancel";
             this.Button_Cancel.UseVisualStyleBackColor = true;
+            this.Button_Cancel.Click += new System.EventHandler(this.Button_Cancel_Click);
             // 
             // Button_OK
             // 
@@ -117,6 +117,7 @@
             this.Button_OK.TabIndex = 12;
             this.Button_OK.Text = "&OK";
             this.Button_OK.UseVisualStyleBackColor = true;
+            this.Button_OK.Click += new System.EventHandler(this.Button_OK_Click);
             // 
             // Button_Next
             // 
@@ -126,6 +127,7 @@
             this.Button_Next.TabIndex = 11;
             this.Button_Next.Text = "&Next";
             this.Button_Next.UseVisualStyleBackColor = true;
+            this.Button_Next.Click += new System.EventHandler(this.Button_Next_Click);
             // 
             // TextBox_Average_Mark
             // 
@@ -133,13 +135,16 @@
             this.TextBox_Average_Mark.Name = "TextBox_Average_Mark";
             this.TextBox_Average_Mark.Size = new System.Drawing.Size(100, 20);
             this.TextBox_Average_Mark.TabIndex = 10;
+            this.TextBox_Average_Mark.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_Average_Mark_KeyPress);
             // 
-            // TextBox_Birth_Name
+            // TextBox_Birth_Year
             // 
-            this.TextBox_Birth_Name.Location = new System.Drawing.Point(110, 97);
-            this.TextBox_Birth_Name.Name = "TextBox_Birth_Name";
-            this.TextBox_Birth_Name.Size = new System.Drawing.Size(100, 20);
-            this.TextBox_Birth_Name.TabIndex = 8;
+            this.TextBox_Birth_Year.Location = new System.Drawing.Point(110, 97);
+            this.TextBox_Birth_Year.MaxLength = 4;
+            this.TextBox_Birth_Year.Name = "TextBox_Birth_Year";
+            this.TextBox_Birth_Year.Size = new System.Drawing.Size(100, 20);
+            this.TextBox_Birth_Year.TabIndex = 8;
+            this.TextBox_Birth_Year.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_Birth_Year_KeyPress);
             // 
             // TextBox_Lastname
             // 
@@ -219,6 +224,7 @@
             this.MinimumSize = new System.Drawing.Size(453, 288);
             this.Name = "InputStudent";
             this.Text = "InputStudent";
+            this.Load += new System.EventHandler(this.InputStudent_Load);
             this.GroupBox_Current_Group.ResumeLayout(false);
             this.GroupBox_Current_Group.PerformLayout();
             this.GroupBox_Add_Student_Info.ResumeLayout(false);
@@ -234,7 +240,7 @@
         private System.Windows.Forms.Label Label_Choose_Group_To_Add;
         private System.Windows.Forms.GroupBox GroupBox_Add_Student_Info;
         private System.Windows.Forms.TextBox TextBox_Average_Mark;
-        private System.Windows.Forms.TextBox TextBox_Birth_Name;
+        private System.Windows.Forms.TextBox TextBox_Birth_Year;
         private System.Windows.Forms.TextBox TextBox_Lastname;
         private System.Windows.Forms.TextBox TextBox_Name;
         private System.Windows.Forms.TextBox TextBox_Surname;
