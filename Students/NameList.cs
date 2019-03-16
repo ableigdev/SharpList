@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Students
 {
-    class NameList<NODETYPE> : List<NODETYPE>, IComparable<NameList<NODETYPE>>, ICloneable where NODETYPE : IComparable<NODETYPE>, new()
+    public class NameList<NODETYPE> : List<NODETYPE>, IComparable<NameList<NODETYPE>>, ICloneable where NODETYPE : IComparable<NODETYPE>, new()
     {
         private string m_NameList;
 

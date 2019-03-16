@@ -6,12 +6,10 @@ using System.Threading.Tasks;
 
 namespace Students 
 {
-    class Student : IComparable<Student>, ICloneable
+    public class Student : IComparable<Student>, ICloneable
     {
         public Student()
         {
-            m_BirthYear = 0;
-            m_Mark = 0.0f;
         }
 
         public string name
