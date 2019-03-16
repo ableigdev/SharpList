@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.GroupBox_Actions = new System.Windows.Forms.GroupBox();
-            this.Button_Add_Students = new System.Windows.Forms.Button();
-            this.Button_Add_Group = new System.Windows.Forms.Button();
-            this.Button_Delete_Selected = new System.Windows.Forms.Button();
-            this.Button_Change_Selected = new System.Windows.Forms.Button();
-            this.Button_Delete_All_Students_In_Group = new System.Windows.Forms.Button();
-            this.Button_Delete_All_Groups = new System.Windows.Forms.Button();
-            this.Button_Get_Students_Subjects = new System.Windows.Forms.Button();
             this.Button_Add_Subjects_And_Marks = new System.Windows.Forms.Button();
+            this.Button_Get_Students_Subjects = new System.Windows.Forms.Button();
+            this.Button_Delete_All_Groups = new System.Windows.Forms.Button();
+            this.Button_Delete_All_Students_In_Group = new System.Windows.Forms.Button();
+            this.Button_Change_Selected = new System.Windows.Forms.Button();
+            this.Button_Delete_Selected = new System.Windows.Forms.Button();
+            this.Button_Add_Group = new System.Windows.Forms.Button();
+            this.Button_Add_Students = new System.Windows.Forms.Button();
             this.Button_Input_Subjects_And_Marks = new System.Windows.Forms.Button();
             this.Button_Exit = new System.Windows.Forms.Button();
             this.Label_Group_List = new System.Windows.Forms.Label();
@@ -44,14 +44,14 @@
             this.ListBox_List_Groups = new System.Windows.Forms.ListBox();
             this.Label_Student_List = new System.Windows.Forms.Label();
             this.TextBox_Edit_Student = new System.Windows.Forms.TextBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.ListBox_List_Students = new System.Windows.Forms.ListBox();
             this.Label_Student_Info = new System.Windows.Forms.Label();
             this.ListBox_List_Stud_Info = new System.Windows.Forms.ListBox();
             this.GroupBox_Faculty_Actions = new System.Windows.Forms.GroupBox();
-            this.Button_Create_Faculty = new System.Windows.Forms.Button();
-            this.Button_Change_Faculty_Name = new System.Windows.Forms.Button();
-            this.Button_Get_Faculty_Name = new System.Windows.Forms.Button();
             this.Button_Delete_Faculty = new System.Windows.Forms.Button();
+            this.Button_Get_Faculty_Name = new System.Windows.Forms.Button();
+            this.Button_Change_Faculty_Name = new System.Windows.Forms.Button();
+            this.Button_Create_Faculty = new System.Windows.Forms.Button();
             this.GroupBox_Actions.SuspendLayout();
             this.GroupBox_Faculty_Actions.SuspendLayout();
             this.SuspendLayout();
@@ -73,65 +73,15 @@
             this.GroupBox_Actions.TabStop = false;
             this.GroupBox_Actions.Text = "Groups/Students Actions";
             // 
-            // Button_Add_Students
+            // Button_Add_Subjects_And_Marks
             // 
-            this.Button_Add_Students.Enabled = false;
-            this.Button_Add_Students.Location = new System.Drawing.Point(6, 19);
-            this.Button_Add_Students.Name = "Button_Add_Students";
-            this.Button_Add_Students.Size = new System.Drawing.Size(179, 23);
-            this.Button_Add_Students.TabIndex = 0;
-            this.Button_Add_Students.Text = "&Add Students...";
-            this.Button_Add_Students.UseVisualStyleBackColor = true;
-            // 
-            // Button_Add_Group
-            // 
-            this.Button_Add_Group.Enabled = false;
-            this.Button_Add_Group.Location = new System.Drawing.Point(6, 48);
-            this.Button_Add_Group.Name = "Button_Add_Group";
-            this.Button_Add_Group.Size = new System.Drawing.Size(179, 23);
-            this.Button_Add_Group.TabIndex = 1;
-            this.Button_Add_Group.Text = "Add G&roup...";
-            this.Button_Add_Group.UseVisualStyleBackColor = true;
-            // 
-            // Button_Delete_Selected
-            // 
-            this.Button_Delete_Selected.Enabled = false;
-            this.Button_Delete_Selected.Location = new System.Drawing.Point(6, 77);
-            this.Button_Delete_Selected.Name = "Button_Delete_Selected";
-            this.Button_Delete_Selected.Size = new System.Drawing.Size(179, 23);
-            this.Button_Delete_Selected.TabIndex = 2;
-            this.Button_Delete_Selected.Text = "&Delete Selected...";
-            this.Button_Delete_Selected.UseVisualStyleBackColor = true;
-            // 
-            // Button_Change_Selected
-            // 
-            this.Button_Change_Selected.Enabled = false;
-            this.Button_Change_Selected.Location = new System.Drawing.Point(6, 106);
-            this.Button_Change_Selected.Name = "Button_Change_Selected";
-            this.Button_Change_Selected.Size = new System.Drawing.Size(179, 23);
-            this.Button_Change_Selected.TabIndex = 3;
-            this.Button_Change_Selected.Text = "C&hange Selected...";
-            this.Button_Change_Selected.UseVisualStyleBackColor = true;
-            // 
-            // Button_Delete_All_Students_In_Group
-            // 
-            this.Button_Delete_All_Students_In_Group.Enabled = false;
-            this.Button_Delete_All_Students_In_Group.Location = new System.Drawing.Point(6, 135);
-            this.Button_Delete_All_Students_In_Group.Name = "Button_Delete_All_Students_In_Group";
-            this.Button_Delete_All_Students_In_Group.Size = new System.Drawing.Size(179, 23);
-            this.Button_Delete_All_Students_In_Group.TabIndex = 4;
-            this.Button_Delete_All_Students_In_Group.Text = "Delete All &Students In Group";
-            this.Button_Delete_All_Students_In_Group.UseVisualStyleBackColor = true;
-            // 
-            // Button_Delete_All_Groups
-            // 
-            this.Button_Delete_All_Groups.Enabled = false;
-            this.Button_Delete_All_Groups.Location = new System.Drawing.Point(6, 164);
-            this.Button_Delete_All_Groups.Name = "Button_Delete_All_Groups";
-            this.Button_Delete_All_Groups.Size = new System.Drawing.Size(179, 23);
-            this.Button_Delete_All_Groups.TabIndex = 5;
-            this.Button_Delete_All_Groups.Text = "Delete A&ll Groups";
-            this.Button_Delete_All_Groups.UseVisualStyleBackColor = true;
+            this.Button_Add_Subjects_And_Marks.Enabled = false;
+            this.Button_Add_Subjects_And_Marks.Location = new System.Drawing.Point(6, 222);
+            this.Button_Add_Subjects_And_Marks.Name = "Button_Add_Subjects_And_Marks";
+            this.Button_Add_Subjects_And_Marks.Size = new System.Drawing.Size(179, 23);
+            this.Button_Add_Subjects_And_Marks.TabIndex = 7;
+            this.Button_Add_Subjects_And_Marks.Text = "Add S&ubjects And Marks...";
+            this.Button_Add_Subjects_And_Marks.UseVisualStyleBackColor = true;
             // 
             // Button_Get_Students_Subjects
             // 
@@ -143,15 +93,68 @@
             this.Button_Get_Students_Subjects.Text = "&Get Students Subjects...";
             this.Button_Get_Students_Subjects.UseVisualStyleBackColor = true;
             // 
-            // Button_Add_Subjects_And_Marks
+            // Button_Delete_All_Groups
             // 
-            this.Button_Add_Subjects_And_Marks.Enabled = false;
-            this.Button_Add_Subjects_And_Marks.Location = new System.Drawing.Point(6, 222);
-            this.Button_Add_Subjects_And_Marks.Name = "Button_Add_Subjects_And_Marks";
-            this.Button_Add_Subjects_And_Marks.Size = new System.Drawing.Size(179, 23);
-            this.Button_Add_Subjects_And_Marks.TabIndex = 7;
-            this.Button_Add_Subjects_And_Marks.Text = "Add S&ubjects And Marks...";
-            this.Button_Add_Subjects_And_Marks.UseVisualStyleBackColor = true;
+            this.Button_Delete_All_Groups.Enabled = false;
+            this.Button_Delete_All_Groups.Location = new System.Drawing.Point(6, 164);
+            this.Button_Delete_All_Groups.Name = "Button_Delete_All_Groups";
+            this.Button_Delete_All_Groups.Size = new System.Drawing.Size(179, 23);
+            this.Button_Delete_All_Groups.TabIndex = 5;
+            this.Button_Delete_All_Groups.Text = "Delete A&ll Groups";
+            this.Button_Delete_All_Groups.UseVisualStyleBackColor = true;
+            this.Button_Delete_All_Groups.Click += new System.EventHandler(this.Button_Delete_All_Groups_Click);
+            // 
+            // Button_Delete_All_Students_In_Group
+            // 
+            this.Button_Delete_All_Students_In_Group.Enabled = false;
+            this.Button_Delete_All_Students_In_Group.Location = new System.Drawing.Point(6, 135);
+            this.Button_Delete_All_Students_In_Group.Name = "Button_Delete_All_Students_In_Group";
+            this.Button_Delete_All_Students_In_Group.Size = new System.Drawing.Size(179, 23);
+            this.Button_Delete_All_Students_In_Group.TabIndex = 4;
+            this.Button_Delete_All_Students_In_Group.Text = "Delete All &Students In Group";
+            this.Button_Delete_All_Students_In_Group.UseVisualStyleBackColor = true;
+            // 
+            // Button_Change_Selected
+            // 
+            this.Button_Change_Selected.Enabled = false;
+            this.Button_Change_Selected.Location = new System.Drawing.Point(6, 106);
+            this.Button_Change_Selected.Name = "Button_Change_Selected";
+            this.Button_Change_Selected.Size = new System.Drawing.Size(179, 23);
+            this.Button_Change_Selected.TabIndex = 3;
+            this.Button_Change_Selected.Text = "C&hange Selected...";
+            this.Button_Change_Selected.UseVisualStyleBackColor = true;
+            // 
+            // Button_Delete_Selected
+            // 
+            this.Button_Delete_Selected.Enabled = false;
+            this.Button_Delete_Selected.Location = new System.Drawing.Point(6, 77);
+            this.Button_Delete_Selected.Name = "Button_Delete_Selected";
+            this.Button_Delete_Selected.Size = new System.Drawing.Size(179, 23);
+            this.Button_Delete_Selected.TabIndex = 2;
+            this.Button_Delete_Selected.Text = "&Delete Selected...";
+            this.Button_Delete_Selected.UseVisualStyleBackColor = true;
+            // 
+            // Button_Add_Group
+            // 
+            this.Button_Add_Group.Enabled = false;
+            this.Button_Add_Group.Location = new System.Drawing.Point(6, 48);
+            this.Button_Add_Group.Name = "Button_Add_Group";
+            this.Button_Add_Group.Size = new System.Drawing.Size(179, 23);
+            this.Button_Add_Group.TabIndex = 1;
+            this.Button_Add_Group.Text = "Add G&roup...";
+            this.Button_Add_Group.UseVisualStyleBackColor = true;
+            this.Button_Add_Group.Click += new System.EventHandler(this.Button_Add_Group_Click);
+            // 
+            // Button_Add_Students
+            // 
+            this.Button_Add_Students.Enabled = false;
+            this.Button_Add_Students.Location = new System.Drawing.Point(6, 19);
+            this.Button_Add_Students.Name = "Button_Add_Students";
+            this.Button_Add_Students.Size = new System.Drawing.Size(179, 23);
+            this.Button_Add_Students.TabIndex = 0;
+            this.Button_Add_Students.Text = "&Add Students...";
+            this.Button_Add_Students.UseVisualStyleBackColor = true;
+            this.Button_Add_Students.Click += new System.EventHandler(this.Button_Add_Students_Click);
             // 
             // Button_Input_Subjects_And_Marks
             // 
@@ -197,6 +200,7 @@
             this.ListBox_List_Groups.Name = "ListBox_List_Groups";
             this.ListBox_List_Groups.Size = new System.Drawing.Size(120, 264);
             this.ListBox_List_Groups.TabIndex = 12;
+            this.ListBox_List_Groups.SelectedIndexChanged += new System.EventHandler(this.ListBox_List_Groups_SelectedIndexChanged);
             // 
             // Label_Student_List
             // 
@@ -215,15 +219,15 @@
             this.TextBox_Edit_Student.Size = new System.Drawing.Size(177, 20);
             this.TextBox_Edit_Student.TabIndex = 14;
             // 
-            // listBox1
+            // ListBox_List_Students
             // 
-            this.listBox1.Enabled = false;
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.HorizontalScrollbar = true;
-            this.listBox1.Location = new System.Drawing.Point(357, 66);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(177, 264);
-            this.listBox1.TabIndex = 15;
+            this.ListBox_List_Students.Enabled = false;
+            this.ListBox_List_Students.FormattingEnabled = true;
+            this.ListBox_List_Students.HorizontalScrollbar = true;
+            this.ListBox_List_Students.Location = new System.Drawing.Point(357, 66);
+            this.ListBox_List_Students.Name = "ListBox_List_Students";
+            this.ListBox_List_Students.Size = new System.Drawing.Size(177, 264);
+            this.ListBox_List_Students.TabIndex = 15;
             // 
             // Label_Student_Info
             // 
@@ -257,24 +261,16 @@
             this.GroupBox_Faculty_Actions.TabStop = false;
             this.GroupBox_Faculty_Actions.Text = "Faculty Actions:";
             // 
-            // Button_Create_Faculty
+            // Button_Delete_Faculty
             // 
-            this.Button_Create_Faculty.Location = new System.Drawing.Point(6, 20);
-            this.Button_Create_Faculty.Name = "Button_Create_Faculty";
-            this.Button_Create_Faculty.Size = new System.Drawing.Size(145, 27);
-            this.Button_Create_Faculty.TabIndex = 0;
-            this.Button_Create_Faculty.Text = "Create &Faculty...";
-            this.Button_Create_Faculty.UseVisualStyleBackColor = true;
-            // 
-            // Button_Change_Faculty_Name
-            // 
-            this.Button_Change_Faculty_Name.Enabled = false;
-            this.Button_Change_Faculty_Name.Location = new System.Drawing.Point(6, 53);
-            this.Button_Change_Faculty_Name.Name = "Button_Change_Faculty_Name";
-            this.Button_Change_Faculty_Name.Size = new System.Drawing.Size(145, 27);
-            this.Button_Change_Faculty_Name.TabIndex = 1;
-            this.Button_Change_Faculty_Name.Text = "&Change Faculty Name...";
-            this.Button_Change_Faculty_Name.UseVisualStyleBackColor = true;
+            this.Button_Delete_Faculty.Enabled = false;
+            this.Button_Delete_Faculty.Location = new System.Drawing.Point(6, 119);
+            this.Button_Delete_Faculty.Name = "Button_Delete_Faculty";
+            this.Button_Delete_Faculty.Size = new System.Drawing.Size(145, 27);
+            this.Button_Delete_Faculty.TabIndex = 3;
+            this.Button_Delete_Faculty.Text = "D&elete Faculty";
+            this.Button_Delete_Faculty.UseVisualStyleBackColor = true;
+            this.Button_Delete_Faculty.Click += new System.EventHandler(this.Button_Delete_Faculty_Click);
             // 
             // Button_Get_Faculty_Name
             // 
@@ -285,15 +281,28 @@
             this.Button_Get_Faculty_Name.TabIndex = 2;
             this.Button_Get_Faculty_Name.Text = "Get Fa&culty Name...";
             this.Button_Get_Faculty_Name.UseVisualStyleBackColor = true;
+            this.Button_Get_Faculty_Name.Click += new System.EventHandler(this.Button_Get_Faculty_Name_Click);
             // 
-            // Button_Delete_Faculty
+            // Button_Change_Faculty_Name
             // 
-            this.Button_Delete_Faculty.Location = new System.Drawing.Point(6, 119);
-            this.Button_Delete_Faculty.Name = "Button_Delete_Faculty";
-            this.Button_Delete_Faculty.Size = new System.Drawing.Size(145, 27);
-            this.Button_Delete_Faculty.TabIndex = 3;
-            this.Button_Delete_Faculty.Text = "D&elete Faculty";
-            this.Button_Delete_Faculty.UseVisualStyleBackColor = true;
+            this.Button_Change_Faculty_Name.Enabled = false;
+            this.Button_Change_Faculty_Name.Location = new System.Drawing.Point(6, 53);
+            this.Button_Change_Faculty_Name.Name = "Button_Change_Faculty_Name";
+            this.Button_Change_Faculty_Name.Size = new System.Drawing.Size(145, 27);
+            this.Button_Change_Faculty_Name.TabIndex = 1;
+            this.Button_Change_Faculty_Name.Text = "&Change Faculty Name...";
+            this.Button_Change_Faculty_Name.UseVisualStyleBackColor = true;
+            this.Button_Change_Faculty_Name.Click += new System.EventHandler(this.Button_Change_Faculty_Name_Click);
+            // 
+            // Button_Create_Faculty
+            // 
+            this.Button_Create_Faculty.Location = new System.Drawing.Point(6, 20);
+            this.Button_Create_Faculty.Name = "Button_Create_Faculty";
+            this.Button_Create_Faculty.Size = new System.Drawing.Size(145, 27);
+            this.Button_Create_Faculty.TabIndex = 0;
+            this.Button_Create_Faculty.Text = "Create &Faculty...";
+            this.Button_Create_Faculty.UseVisualStyleBackColor = true;
+            this.Button_Create_Faculty.Click += new System.EventHandler(this.Button_Create_Faculty_Click);
             // 
             // StudentsGUIDlg
             // 
@@ -303,7 +312,7 @@
             this.Controls.Add(this.GroupBox_Faculty_Actions);
             this.Controls.Add(this.ListBox_List_Stud_Info);
             this.Controls.Add(this.Label_Student_Info);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.ListBox_List_Students);
             this.Controls.Add(this.TextBox_Edit_Student);
             this.Controls.Add(this.Label_Student_List);
             this.Controls.Add(this.ListBox_List_Groups);
@@ -342,7 +351,7 @@
         private System.Windows.Forms.ListBox ListBox_List_Groups;
         private System.Windows.Forms.Label Label_Student_List;
         private System.Windows.Forms.TextBox TextBox_Edit_Student;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox ListBox_List_Students;
         private System.Windows.Forms.Label Label_Student_Info;
         private System.Windows.Forms.ListBox ListBox_List_Stud_Info;
         private System.Windows.Forms.GroupBox GroupBox_Faculty_Actions;
