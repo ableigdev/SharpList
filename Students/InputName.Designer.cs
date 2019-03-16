@@ -58,6 +58,7 @@
             this.Button_OK.TabIndex = 2;
             this.Button_OK.Text = "&OK";
             this.Button_OK.UseVisualStyleBackColor = true;
+            this.Button_OK.Click += new System.EventHandler(this.Button_OK_Click);
             // 
             // Button_Cancel
             // 
@@ -67,6 +68,7 @@
             this.Button_Cancel.TabIndex = 3;
             this.Button_Cancel.Text = "&Cancel";
             this.Button_Cancel.UseVisualStyleBackColor = true;
+            this.Button_Cancel.Click += new System.EventHandler(this.Button_Cancel_Click);
             // 
             // InputName
             // 
@@ -82,6 +84,7 @@
             this.MinimumSize = new System.Drawing.Size(425, 155);
             this.Name = "InputName";
             this.Text = "Enter New Name of";
+            this.Load += new System.EventHandler(this.InputName_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

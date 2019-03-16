@@ -12,9 +12,52 @@ namespace Students
 {
     public partial class InputName : Form
     {
+        private string m_Name;
+
         public InputName()
         {
             InitializeComponent();
+        }
+
+        public string nameOfTheList
+        {
+            set
+            {
+                if (value != null)
+                {
+                    this.TextBox_New_Name.Text = m_Name = value;
+                }
+            }
+            get
+            {
+                return m_Name;
+            }
+        }
+
+        private void Button_OK_Click(object sender, EventArgs e)
+        {
+            var str = this.TextBox_New_Name.Text;
+            if (str.Length > 0)
+            {
+                m_Name = str;
+                DialogResult = DialogResult.OK;
+                Close();
+            }
+            else
+            {
+                MessageBox.Show("You must not enter empty strings!", "Error", MessageBoxButtons.OK);
+            }
+        }
+
+        private void Button_Cancel_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
+            Close();
+        }
+
+        private void InputName_Load(object sender, EventArgs e)
+        {
+            this.TextBox_New_Name.Text = "";
         }
     }
 }
