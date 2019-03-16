@@ -10,54 +10,57 @@ namespace Students
     {
         static void Main(string[] args)
         {
-            List<int> list = new List<int>();
-            int elem = 0, i;
+            StudentsGUIDlg win = new StudentsGUIDlg();
+            win.ShowDialog();
 
-            Random r = new Random(10000);
+            //List<int> list = new List<int>();
+            //int elem = 0, i;
 
-            for (i = 0; i < 10; ++i)
-            {
-                elem = r.Next();
-                list.pushBack(elem);
-                Console.WriteLine("{0:D}", elem);
-            }
+            //Random r = new Random(10000);
 
-            Console.WriteLine("\nSource list:");
-            foreach (var curElem in list.chooseOrder(false))
-                Console.WriteLine("{0:D}", curElem);
+            //for (i = 0; i < 10; ++i)
+            //{
+            //    elem = r.Next();
+            //    list.pushBack(elem);
+            //    Console.WriteLine("{0:D}", elem);
+            //}
 
-            list.setEnd();
-            --list;
-            list.deleteCurrentNode();
+            //Console.WriteLine("\nSource list:");
+            //foreach (var curElem in list.chooseOrder(false))
+            //    Console.WriteLine("{0:D}", curElem);
 
-            Console.WriteLine("\nModified list:");
+            //list.setEnd();
+            //--list;
+            //list.deleteCurrentNode();
 
-            foreach (var curElem in list.chooseOrder(false))
-                Console.WriteLine("{0:D}", curElem);
+            //Console.WriteLine("\nModified list:");
 
-            List<int> listNew = (List<int>)((ICloneable)list).Clone();
+            //foreach (var curElem in list.chooseOrder(false))
+            //    Console.WriteLine("{0:D}", curElem);
 
-            Console.WriteLine("\nCopied list:");
-            foreach (var curElem in listNew.chooseOrder(true))
-                Console.WriteLine("{0:D}", curElem);
+            //List<int> listNew = (List<int>)((ICloneable)list).Clone();
 
-            NameList<int> nameList = new NameList<int>();
-            nameList.nameList = "test";
+            //Console.WriteLine("\nCopied list:");
+            //foreach (var curElem in listNew.chooseOrder(true))
+            //    Console.WriteLine("{0:D}", curElem);
 
-            for (int j = 0; j < 5; ++j)
-            {
-                nameList.pushBack(j);
-            }
+            //NameList<int> nameList = new NameList<int>();
+            //nameList.nameList = "test";
 
-            Console.WriteLine("\nSource nameList:");
-            foreach (var curElem in nameList.chooseOrder(false))
-                Console.WriteLine("{0:D}", curElem);
+            //for (int j = 0; j < 5; ++j)
+            //{
+            //    nameList.pushBack(j);
+            //}
 
-            NameList<int> cloneNameList = (NameList<int>)((ICloneable)nameList).Clone();
+            //Console.WriteLine("\nSource nameList:");
+            //foreach (var curElem in nameList.chooseOrder(false))
+            //    Console.WriteLine("{0:D}", curElem);
 
-            Console.WriteLine("\nCopy nameList:");
-            foreach (var curElem in cloneNameList.chooseOrder(false))
-                Console.WriteLine("{0:D}", curElem);
+            //NameList<int> cloneNameList = (NameList<int>)((ICloneable)nameList).Clone();
+
+            //Console.WriteLine("\nCopy nameList:");
+            //foreach (var curElem in cloneNameList.chooseOrder(false))
+            //    Console.WriteLine("{0:D}", curElem);
 
             //Student student = new Student();
             //Student student2 = new Student();
