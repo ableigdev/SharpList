@@ -267,5 +267,67 @@ namespace Students
 
             // TODO: Correct scroller
         }
+
+        private int setNewSelect(ListBox listBox, int maxExtCx)
+        {
+            int currentSelect = listBox.SelectedIndex;
+            // TODO: Correct scroller
+
+            if (currentSelect != 0)
+            {
+                --currentSelect;
+            }
+
+            listBox.SelectedIndex = currentSelect;
+            return currentSelect;
+        }
+
+        private int changeItem(ListBox listBox, int maxExtCx, string name)
+        {
+            int currentSelect = listBox.SelectedIndex;
+            if (currentSelect != ListBox.NoMatches)
+            {
+                // TODO: correct scroller
+            }
+            return currentSelect;
+        }
+
+        private void deleteStudent()
+        {
+            m_CurrentGroup = m_Faculty.currentData;
+            m_CurrentGroup.deleteElement(m_CurrentGroup.currentData);
+            if (m_CurrentGroup.isNotEmpty())
+            {
+                m_CurrentStudent = m_CurrentGroup.currentData;
+                //m_OldStudSelect = setNewSelect(ListBox_List_Students, m_MaxExtListStud);
+                showStudentInformation(m_CurrentStudent);
+            }
+            else
+            {
+                deleteStudentList();
+                setStudentActions(false);
+            }
+        }
+
+        private void modifyStudent()
+        {
+            m_InputStudInfo.changeFlag = true;
+            m_InputStudInfo.student = m_CurrentStudent;
+
+            if (m_InputStudInfo.ShowDialog() == DialogResult.OK)
+            {
+                m_CurrentGroup = m_Faculty.currentData;
+                m_CurrentGroup.sort();
+                //m_OldStudSelect = changeItem(ListBox_List_Students, m_MaxExtListStud, m_CurrentStudent.surname);
+                showStudentInformation(m_CurrentStudent);
+            }
+        }
+
+        private int getStudentSelect()
+        {
+            return ListBox_List_Students.SelectedIndex;
+        }
+
+
     }
 }
