@@ -65,7 +65,6 @@ namespace Students
 
         private void setActiveSurname()
         {
-            // TODO: Just do it method!
             this.ActiveControl = TextBox_Surname;
             TextBox_Surname.SelectAll();
         }
@@ -86,7 +85,7 @@ namespace Students
                 {
                     m_Faculty.setStart();
                     // TODO: Correct the mistake
-                    for (int i = 0; i < m_CurrentGroupIndex; ++i/*, ++m_Faculty*/);
+                    for (int i = 0; i < m_CurrentGroupIndex; ++i, ++m_Faculty);
                     m_Faculty.currentData.pushInSortList(m_Student);
                 }
                 return true;

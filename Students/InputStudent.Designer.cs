@@ -219,6 +219,7 @@
             this.ClientSize = new System.Drawing.Size(437, 249);
             this.Controls.Add(this.GroupBox_Add_Student_Info);
             this.Controls.Add(this.GroupBox_Current_Group);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(453, 288);
             this.MinimumSize = new System.Drawing.Size(453, 288);
