@@ -442,22 +442,32 @@ namespace Students
             return list != null && list.m_FirstPtr != null;
         }
 
+        protected List<NODETYPE> next()
+        {
+            if (m_CurrentNodePtr != null)
+            {
+                m_CurrentNodePtr = m_CurrentNodePtr.nextPtr;
+            }
+            return this;
+        }
+
+        protected List<NODETYPE> prev()
+        {
+            if (m_CurrentNodePtr != null)
+            {
+                m_CurrentNodePtr = m_CurrentNodePtr.prevPtr;
+            }
+            return this;
+        }
+
         public static List<NODETYPE> operator++(List<NODETYPE> list)
         {
-            if (list.m_CurrentNodePtr != null)
-            {
-                list.m_CurrentNodePtr = list.m_CurrentNodePtr.nextPtr;
-            }
-            return list;
+            return !Object.ReferenceEquals(list, null) ? list.next() : null;
         }
 
         public static List<NODETYPE> operator--(List<NODETYPE> list)
         {
-            if (list.m_CurrentNodePtr != null)
-            {
-                list.m_CurrentNodePtr = list.m_CurrentNodePtr.prevPtr;
-            }
-            return list;
+            return !Object.ReferenceEquals(list, null) ? list.prev() : null;
         }
 
         public IEnumerator<NODETYPE> GetEnumerator()

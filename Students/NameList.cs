@@ -30,6 +30,16 @@ namespace Students
             }
         }
 
+        public static NameList<NODETYPE> operator++(NameList<NODETYPE> list)
+        {
+            return !Object.ReferenceEquals(list, null) ? (NameList<NODETYPE>)list.next() : null;
+        }
+
+        public static NameList<NODETYPE> operator--(NameList<NODETYPE> list)
+        {
+            return !Object.ReferenceEquals(list, null) ? (NameList<NODETYPE>)list.prev() : null;
+        }
+
         private static int checkLists(NameList<NODETYPE> leftList, NameList<NODETYPE> rightList)
         {
             bool resultRightList = Object.ReferenceEquals(rightList, null);
