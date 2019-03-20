@@ -62,6 +62,7 @@
             // 
             // Button_Cancel
             // 
+            this.Button_Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.Button_Cancel.Location = new System.Drawing.Point(254, 79);
             this.Button_Cancel.Name = "Button_Cancel";
             this.Button_Cancel.Size = new System.Drawing.Size(75, 23);
@@ -72,17 +73,21 @@
             // 
             // InputName
             // 
+            this.AcceptButton = this.Button_OK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.Button_Cancel;
             this.ClientSize = new System.Drawing.Size(409, 116);
             this.Controls.Add(this.Button_Cancel);
             this.Controls.Add(this.Button_OK);
             this.Controls.Add(this.TextBox_New_Name);
             this.Controls.Add(this.Label_Enter_New_Name);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(425, 155);
             this.MinimumSize = new System.Drawing.Size(425, 155);
             this.Name = "InputName";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Enter New Name of";
             this.Load += new System.EventHandler(this.InputName_Load);
             this.ResumeLayout(false);

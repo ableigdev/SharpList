@@ -36,7 +36,7 @@ namespace Students
 
         private void Button_OK_Click(object sender, EventArgs e)
         {
-            var str = this.TextBox_New_Name.Text;
+            var str = this.TextBox_New_Name.Text.Trim();
             if (str.Length > 0)
             {
                 m_Name = str;
