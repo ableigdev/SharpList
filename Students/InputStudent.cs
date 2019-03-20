@@ -84,7 +84,6 @@ namespace Students
                 if (!m_ChangeFlag)
                 {
                     m_Faculty.setStart();
-                    // TODO: Correct the mistake
                     for (int i = 0; i < m_CurrentGroupIndex; ++i, ++m_Faculty);
                     m_Faculty.currentData.pushInSortList(m_Student);
                 }
@@ -98,10 +97,11 @@ namespace Students
 
         private void InputStudent_Load(object sender, EventArgs e)
         {
+            ComboBox_Groups.Items.Clear();
             // Add mode
             if (!m_ChangeFlag)
             {
-                //m_Student = m_WorkStudent;
+                m_Student = (Student)m_WorkStudent.Clone();
                 m_IsModify = true;
                 this.Text = "Input Student Information";
             }
@@ -127,16 +127,6 @@ namespace Students
                     ComboBox_Groups.Items.Insert(counter++, curElem.nameList);
                 }
                 ComboBox_Groups.SelectedIndex = m_CurrentGroupIndex != -1 ? m_CurrentGroupIndex : 0;
-                setBeginState(currentGroup);
-            }
-        }
-
-        private void setBeginState(NameList<Student> group)
-        {
-            //while (!Object.ReferenceEquals(m_Faculty.currentData, group))
-            {
-                // TODO: Just Do it!
-                //m_Faculty++;
             }
         }
 

@@ -109,10 +109,11 @@ namespace Students
             deleteGroupList();
             if (setGroupActions(m_Faculty.isNotEmpty()))
             {
-                //m_Faculty.setStart();
-                foreach (var tempGroup in m_Faculty.chooseOrder())
+                m_Faculty.setStart();
+                for (int i = 0; i < m_Faculty.size; ++i, ++m_Faculty)
                 {
-                    showString(tempGroup);
+                    m_CurrentGroup = m_Faculty.currentData;
+                    showString(m_CurrentGroup);
                 }
                 m_Faculty.setStart();
                 m_CurrentGroup = m_Faculty.currentData;
@@ -195,9 +196,17 @@ namespace Students
             }
         }
 
+        private void showString(Student student)
+        {
+            // TODO: Implement this method
+            // This is just test code
+            // You must delete it in the future
+            ListBox_List_Students.Items.Add(student.surname + " " + student.name);
+        }
+
         private void showStudent()
         {
-            deleteAllLists();
+            deleteStudentList();
 
             if (m_Faculty.isNotEmpty())
             {
@@ -205,13 +214,11 @@ namespace Students
                 if (m_CurrentGroup.isNotEmpty())
                 {
                     m_CurrentGroup.setStart();
-                    // TODO: Create cycle which will be traversaling all students in the group
-                    //for (size_t i = 0; i < m_CurrentGroup->getSize(); ++i)
-                    //{
-                    //    m_Student = &m_CurrentGroup->getReferencesCurrentData();
-                    //    showString(*m_Student);
-                    //    ++*m_CurrentGroup;
-                    //}
+                    for (int i = 0; i < m_CurrentGroup.size; ++i, ++m_CurrentGroup)
+                    {
+                        m_CurrentStudent = m_CurrentGroup.currentData;
+                        showString(m_CurrentStudent);
+                    }
                     m_CurrentGroup.setStart();
                     m_CurrentStudent = m_CurrentGroup.currentData;
                     m_OldStudSelect = ListBox.NoMatches;
