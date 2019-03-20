@@ -29,12 +29,11 @@
         private void InitializeComponent()
         {
             this.GroupBox_Add_Data = new System.Windows.Forms.GroupBox();
-            this.Label_Subject = new System.Windows.Forms.Label();
-            this.Label_Mark = new System.Windows.Forms.Label();
-            this.TextBox_Input_Subject = new System.Windows.Forms.TextBox();
-            this.TextBox_Input_Mark = new System.Windows.Forms.TextBox();
-            this.Button_Add_Subject = new System.Windows.Forms.Button();
             this.Button_Add_Mark = new System.Windows.Forms.Button();
+            this.Button_Add_Subject = new System.Windows.Forms.Button();
+            this.TextBox_Input_Subject = new System.Windows.Forms.TextBox();
+            this.Label_Mark = new System.Windows.Forms.Label();
+            this.Label_Subject = new System.Windows.Forms.Label();
             this.Label_All_Subjects = new System.Windows.Forms.Label();
             this.Label_All_Marks = new System.Windows.Forms.Label();
             this.ListBox_All_Subjects = new System.Windows.Forms.ListBox();
@@ -42,6 +41,7 @@
             this.Button_Save_Subjects = new System.Windows.Forms.Button();
             this.Button_Delete_Subject = new System.Windows.Forms.Button();
             this.Button_Delete_Mark = new System.Windows.Forms.Button();
+            this.TextBox_Input_Mark = new System.Windows.Forms.MaskedTextBox();
             this.GroupBox_Add_Data.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,7 +49,6 @@
             // 
             this.GroupBox_Add_Data.Controls.Add(this.Button_Add_Mark);
             this.GroupBox_Add_Data.Controls.Add(this.Button_Add_Subject);
-            this.GroupBox_Add_Data.Controls.Add(this.TextBox_Input_Mark);
             this.GroupBox_Add_Data.Controls.Add(this.TextBox_Input_Subject);
             this.GroupBox_Add_Data.Controls.Add(this.Label_Mark);
             this.GroupBox_Add_Data.Controls.Add(this.Label_Subject);
@@ -60,14 +59,32 @@
             this.GroupBox_Add_Data.TabStop = false;
             this.GroupBox_Add_Data.Text = "Add data";
             // 
-            // Label_Subject
+            // Button_Add_Mark
             // 
-            this.Label_Subject.AutoSize = true;
-            this.Label_Subject.Location = new System.Drawing.Point(6, 20);
-            this.Label_Subject.Name = "Label_Subject";
-            this.Label_Subject.Size = new System.Drawing.Size(46, 13);
-            this.Label_Subject.TabIndex = 0;
-            this.Label_Subject.Text = "Subject:";
+            this.Button_Add_Mark.Location = new System.Drawing.Point(276, 45);
+            this.Button_Add_Mark.Name = "Button_Add_Mark";
+            this.Button_Add_Mark.Size = new System.Drawing.Size(75, 23);
+            this.Button_Add_Mark.TabIndex = 5;
+            this.Button_Add_Mark.Text = "Add &Mark";
+            this.Button_Add_Mark.UseVisualStyleBackColor = true;
+            this.Button_Add_Mark.Click += new System.EventHandler(this.Button_Add_Mark_Click);
+            // 
+            // Button_Add_Subject
+            // 
+            this.Button_Add_Subject.Location = new System.Drawing.Point(276, 15);
+            this.Button_Add_Subject.Name = "Button_Add_Subject";
+            this.Button_Add_Subject.Size = new System.Drawing.Size(75, 23);
+            this.Button_Add_Subject.TabIndex = 2;
+            this.Button_Add_Subject.Text = "Add &Subject";
+            this.Button_Add_Subject.UseVisualStyleBackColor = true;
+            this.Button_Add_Subject.Click += new System.EventHandler(this.Button_Add_Subject_Click);
+            // 
+            // TextBox_Input_Subject
+            // 
+            this.TextBox_Input_Subject.Location = new System.Drawing.Point(76, 17);
+            this.TextBox_Input_Subject.Name = "TextBox_Input_Subject";
+            this.TextBox_Input_Subject.Size = new System.Drawing.Size(194, 20);
+            this.TextBox_Input_Subject.TabIndex = 1;
             // 
             // Label_Mark
             // 
@@ -78,37 +95,14 @@
             this.Label_Mark.TabIndex = 3;
             this.Label_Mark.Text = "Mark:";
             // 
-            // TextBox_Input_Subject
+            // Label_Subject
             // 
-            this.TextBox_Input_Subject.Location = new System.Drawing.Point(76, 17);
-            this.TextBox_Input_Subject.Name = "TextBox_Input_Subject";
-            this.TextBox_Input_Subject.Size = new System.Drawing.Size(194, 20);
-            this.TextBox_Input_Subject.TabIndex = 1;
-            // 
-            // TextBox_Input_Mark
-            // 
-            this.TextBox_Input_Mark.Location = new System.Drawing.Point(76, 43);
-            this.TextBox_Input_Mark.Name = "TextBox_Input_Mark";
-            this.TextBox_Input_Mark.Size = new System.Drawing.Size(194, 20);
-            this.TextBox_Input_Mark.TabIndex = 4;
-            // 
-            // Button_Add_Subject
-            // 
-            this.Button_Add_Subject.Location = new System.Drawing.Point(276, 15);
-            this.Button_Add_Subject.Name = "Button_Add_Subject";
-            this.Button_Add_Subject.Size = new System.Drawing.Size(75, 23);
-            this.Button_Add_Subject.TabIndex = 2;
-            this.Button_Add_Subject.Text = "Add &Subject";
-            this.Button_Add_Subject.UseVisualStyleBackColor = true;
-            // 
-            // Button_Add_Mark
-            // 
-            this.Button_Add_Mark.Location = new System.Drawing.Point(276, 45);
-            this.Button_Add_Mark.Name = "Button_Add_Mark";
-            this.Button_Add_Mark.Size = new System.Drawing.Size(75, 23);
-            this.Button_Add_Mark.TabIndex = 5;
-            this.Button_Add_Mark.Text = "Add &Mark";
-            this.Button_Add_Mark.UseVisualStyleBackColor = true;
+            this.Label_Subject.AutoSize = true;
+            this.Label_Subject.Location = new System.Drawing.Point(6, 20);
+            this.Label_Subject.Name = "Label_Subject";
+            this.Label_Subject.Size = new System.Drawing.Size(46, 13);
+            this.Label_Subject.TabIndex = 0;
+            this.Label_Subject.Text = "Subject:";
             // 
             // Label_All_Subjects
             // 
@@ -173,11 +167,21 @@
             this.Button_Delete_Mark.Text = "Delete M&ark";
             this.Button_Delete_Mark.UseVisualStyleBackColor = true;
             // 
+            // TextBox_Input_Mark
+            // 
+            this.TextBox_Input_Mark.Location = new System.Drawing.Point(89, 59);
+            this.TextBox_Input_Mark.Mask = "0.00";
+            this.TextBox_Input_Mark.Name = "TextBox_Input_Mark";
+            this.TextBox_Input_Mark.Size = new System.Drawing.Size(194, 20);
+            this.TextBox_Input_Mark.TabIndex = 13;
+            // 
             // InputSubjectsAndMarks
             // 
+            this.AcceptButton = this.Button_Add_Subject;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(382, 322);
+            this.Controls.Add(this.TextBox_Input_Mark);
             this.Controls.Add(this.Button_Delete_Mark);
             this.Controls.Add(this.Button_Delete_Subject);
             this.Controls.Add(this.Button_Save_Subjects);
@@ -190,6 +194,7 @@
             this.MaximumSize = new System.Drawing.Size(398, 361);
             this.MinimumSize = new System.Drawing.Size(398, 361);
             this.Name = "InputSubjectsAndMarks";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Input Subjects And Marks";
             this.GroupBox_Add_Data.ResumeLayout(false);
             this.GroupBox_Add_Data.PerformLayout();
@@ -203,7 +208,6 @@
         private System.Windows.Forms.GroupBox GroupBox_Add_Data;
         private System.Windows.Forms.Button Button_Add_Mark;
         private System.Windows.Forms.Button Button_Add_Subject;
-        private System.Windows.Forms.TextBox TextBox_Input_Mark;
         private System.Windows.Forms.TextBox TextBox_Input_Subject;
         private System.Windows.Forms.Label Label_Mark;
         private System.Windows.Forms.Label Label_Subject;
@@ -214,5 +218,6 @@
         private System.Windows.Forms.Button Button_Save_Subjects;
         private System.Windows.Forms.Button Button_Delete_Subject;
         private System.Windows.Forms.Button Button_Delete_Mark;
+        private System.Windows.Forms.MaskedTextBox TextBox_Input_Mark;
     }
 }
