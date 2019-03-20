@@ -14,17 +14,24 @@ namespace Students
     {
         private InputName m_InputNewName;
         private InputStudent m_InputStudInfo;
+        private SelectAction m_SelectAction;
+        private InputSubjectsAndMarks m_InputSubjects;
         private NameList<NameList<Student>> m_Faculty;
         private NameList<Student> m_CurrentGroup;
         private Student m_CurrentStudent;
         private int m_OldGroupSelect;
         private int m_OldStudSelect;
+        private int m_MaxExtListStud;
+        private int m_MaxExtListInfoStud;
+        private int m_MaxExtListGroup;
 
         public StudentsGUIDlg()
         {
             InitializeComponent();
             m_InputNewName = new InputName();
             m_InputStudInfo = new InputStudent();
+            m_SelectAction = new SelectAction();
+            m_InputSubjects = new InputSubjectsAndMarks();
             m_Faculty = new NameList<NameList<Student>>();
         }
 
@@ -34,6 +41,7 @@ namespace Students
             Button_Delete_Faculty.Enabled = flag;
             Button_Get_Faculty_Name.Enabled = flag;
             Button_Add_Group.Enabled = flag;
+            setAddFacultyAction(!flag);
         }
 
         private void setAddFacultyAction(bool flag)
@@ -77,21 +85,24 @@ namespace Students
 
         private void deleteGroupList()
         {
-            ListBox_List_Groups.Items.Clear();
-            // TODO: Add correct scroller
+            clearList(ListBox_List_Groups, ref m_MaxExtListGroup);
         }
 
         private void deleteStudentList()
         {
             deleteStudentInformation();
-            ListBox_List_Students.Items.Clear();
-            // TODO: Add correct scroller
+            clearList(ListBox_List_Students, ref m_MaxExtListStud);
         }
 
         private void deleteStudentInformation()
         {
-            ListBox_List_Stud_Info.Items.Clear();
-            // TODO: Add correct scroller
+            clearList(ListBox_List_Stud_Info, ref m_MaxExtListInfoStud);
+        }
+
+        private void clearList(ListBox list, ref int maxExt)
+        {
+            list.HorizontalExtent = maxExt = 0;
+            list.Items.Clear();
         }
 
         private int getGroupSelect()
@@ -102,6 +113,7 @@ namespace Students
         private void showString(NameList<Student> group)
         {
             ListBox_List_Groups.Items.Add(group.nameList);
+            CommonCorrectScroll.correctHScrlAdd(ListBox_List_Groups, group.nameList, ref m_MaxExtListGroup);
         }
 
         private void showGroups()
@@ -117,6 +129,7 @@ namespace Students
                 }
                 m_Faculty.setStart();
                 m_CurrentGroup = m_Faculty.currentData;
+                m_OldGroupSelect = -1;
             }
         }
 
@@ -153,7 +166,16 @@ namespace Students
 
         private void Button_Delete_All_Groups_Click(object sender, EventArgs e)
         {
-
+            setStudentActions(false);
+            setGroupActions(false);
+            Button_Delete_All_Groups.Enabled = false;
+            Button_Delete_All_Students_In_Group.Enabled = false;
+            TextBox_Edit_Group.Text = "";
+            TextBox_Edit_Student.Text = "";
+            setSelectedActions(false);
+            deleteAllLists();
+            disableSubjectsButton();
+            m_Faculty.deleteAllElements();
         }
 
         private void Button_Add_Students_Click(object sender, EventArgs e)
@@ -169,7 +191,8 @@ namespace Students
             if (selected != ListBox.NoMatches)
             {
                 ListBox_List_Groups.SelectedIndex = selected;
-                ListBox_List_Groups_SelectedIndexChanged(sender, e);
+                // TODO: Check it!
+                //ListBox_List_Groups_SelectedIndexChanged(sender, e);
             }
         }
 
@@ -178,6 +201,10 @@ namespace Students
             int selected = getGroupSelect();
             if (selected != ListBox.NoMatches && selected != m_OldGroupSelect)
             {
+                // TODO: Solve this issue:
+                //Iterator<NameList<Student>> it = new Iterator<NameList<Student>>(m_Faculty);
+                //Common<NameList<Student>>.for_each_listbox(iterator, ListBox_List_Groups, ref m_OldGroupSelect, selected);
+
                 int counter = 0;
                 // TODO: Refactor this part of code 
                 // Because it has danger situation
@@ -198,10 +225,20 @@ namespace Students
 
         private void showString(Student student)
         {
-            // TODO: Implement this method
-            // This is just test code
-            // You must delete it in the future
-            ListBox_List_Students.Items.Add(student.surname + " " + student.name);
+            var str = getStudentString(student);
+            ListBox_List_Students.Items.Add(str);
+            CommonCorrectScroll.correctHScrlAdd(ListBox_List_Students, str, ref m_MaxExtListStud);
+        }
+
+        // TODO: Add to common
+        private string getStudentString(Student student)
+        {
+            string str = student.surname + " " + student.name.Substring(0, 1) + ". ";
+            if (student.lastname.Length > 0)
+            {
+                str += student.lastname.Substring(0, 1) + ".";
+            }
+            return str;
         }
 
         private void showStudent()
@@ -260,25 +297,26 @@ namespace Students
         {
             deleteStudentInformation();
             
-            StringBuilder buff = new StringBuilder();
-            buff.AppendFormat("Surname              : %s", student.surname);
-            ListBox_List_Stud_Info.Items.Add(buff.ToString());
-            buff.AppendFormat("Name                   : %s", student.name);
-            ListBox_List_Stud_Info.Items.Add(buff.ToString());
-            buff.AppendFormat("Lastname             : %s", student.lastname);
-            ListBox_List_Stud_Info.Items.Add(buff.ToString());
-            buff.AppendFormat("Birth Year             : %i", student.birthYear);
-            ListBox_List_Stud_Info.Items.Add(buff.ToString());
-            buff.AppendFormat("Average Grade    : %4.2f", student.mark);
-            ListBox_List_Stud_Info.Items.Add(buff.ToString());
+            string str = "Surname              : " + student.surname;
+            ListBox_List_Stud_Info.Items.Add(str);
+            str = "Name                   : " + student.name;
+            ListBox_List_Stud_Info.Items.Add(str);
+            str = "Lastname             : " + student.lastname;
+            ListBox_List_Stud_Info.Items.Add(str);
+            str = "Birth Year             : " + student.birthYear;
+            ListBox_List_Stud_Info.Items.Add(str);
+            str = "Average Grade    : " + student.mark;
+            ListBox_List_Stud_Info.Items.Add(str);
 
-            // TODO: Correct scroller
+            ListBox_List_Stud_Info.HorizontalExtent = m_MaxExtListInfoStud;
         }
 
-        private int setNewSelect(ListBox listBox, int maxExtCx)
+        private int setNewSelect(ListBox listBox, ref int maxExtCx)
         {
             int currentSelect = listBox.SelectedIndex;
             // TODO: Correct scroller
+            // TODO: Check it!
+            CommonCorrectScroll.corrctHScrlDel(listBox, listBox.Items[currentSelect].ToString(), ref maxExtCx);
 
             if (currentSelect != 0)
             {
@@ -289,12 +327,16 @@ namespace Students
             return currentSelect;
         }
 
-        private int changeItem(ListBox listBox, int maxExtCx, string name)
+        private int changeItem(ListBox listBox, ref int maxExtCx, string name)
         {
             int currentSelect = listBox.SelectedIndex;
             if (currentSelect != ListBox.NoMatches)
             {
-                // TODO: correct scroller
+                // TODO: correct scroller and check it
+                //listBox.Items.RemoveAt(currentSelect);
+                CommonCorrectScroll.corrctHScrlDel(listBox, listBox.Items[currentSelect].ToString(), ref maxExtCx);
+                listBox.SelectedIndex = (currentSelect = listBox.Items.Add(name));
+                CommonCorrectScroll.correctHScrlAdd(listBox, listBox.Items[currentSelect].ToString(), ref maxExtCx);
             }
             return currentSelect;
         }
@@ -306,7 +348,7 @@ namespace Students
             if (m_CurrentGroup.isNotEmpty())
             {
                 m_CurrentStudent = m_CurrentGroup.currentData;
-                //m_OldStudSelect = setNewSelect(ListBox_List_Students, m_MaxExtListStud);
+                m_OldStudSelect = setNewSelect(ListBox_List_Students, ref m_MaxExtListStud);
                 showStudentInformation(m_CurrentStudent);
             }
             else
@@ -325,7 +367,7 @@ namespace Students
             {
                 m_CurrentGroup = m_Faculty.currentData;
                 m_CurrentGroup.sort();
-                //m_OldStudSelect = changeItem(ListBox_List_Students, m_MaxExtListStud, m_CurrentStudent.surname);
+                m_OldStudSelect = changeItem(ListBox_List_Students, ref m_MaxExtListStud, m_CurrentStudent.surname);
                 showStudentInformation(m_CurrentStudent);
             }
         }
@@ -335,31 +377,240 @@ namespace Students
             return ListBox_List_Students.SelectedIndex;
         }
 
-        private void correctHScrlAdd(ListBox list, string currString, ref int maxExt)
+        private void disableSubjectsButton()
         {
-            int curExt = (int)TextRenderer.MeasureText(currString, list.Font).Width;
-            if (curExt > maxExt)
+            Button_Get_Students_Subjects.Enabled = false;
+            Button_Input_Subjects_And_Marks.Enabled = false;
+        }
+
+        private void deleteSelectedStudent()
+        {
+            int select = getStudentSelect();
+            // TODO: Check it! Be careful!
+            m_CurrentGroup.deleteCurrentNode();
+            if (m_CurrentGroup.isNotEmpty())
             {
-                maxExt = curExt;
+                m_CurrentGroup.setStart();
+                m_CurrentStudent = m_CurrentGroup.currentData;
+            }
+            else
+            {
+                deleteStudentList();
+                setSelectedActions(false);
+                m_CurrentStudent = null;
+                Button_Delete_All_Students_In_Group.Enabled = false;
+                disableSubjectsButton();
+            }
+            showStudent();
+            if (--select != -1)
+            {
+                ListBox_List_Students.SelectedIndex = select;
+                // TODO: Check it!
+                //ListBox_List_Students_SelectedIndexChanged(this, null);
+            }
+            else if (ListBox_List_Students.Items.Count >= 0)
+            {
+                ListBox_List_Students.SelectedIndex = 0;
+                // TODO: Check it!
+                //ListBox_List_Students_SelectedIndexChanged(this, null);
             }
         }
 
-        private void corrctHScrlDel(ListBox list, string curString, ref int maxExt)
+        private void ListBox_List_Students_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int curExt = (int)TextRenderer.MeasureText(curString, list.Font).Width;
-            if (curExt == maxExt)
+            int selected = getStudentSelect();
+
+            if (selected != -1 && selected != m_OldStudSelect)
             {
-                maxExt = 0;
-                foreach(object elem in list.Items)
+                // TODO: Remake it!
+                //Iterator<Student> iter = new Iterator<Student>(m_CurrentGroup);
+                //Common<Student>.for_each_listbox(iter, ListBox_List_Groups, m_OldStudSelect, selected);
+                m_CurrentStudent = m_CurrentGroup.currentData;
+                showStudentInformation(m_CurrentStudent);
+                setSelectedActions(true);
+                // TODO: Add InputSubject actions
+            }
+        }
+
+        private void deleteSelectedGroup()
+        {
+            int select = getGroupSelect();
+            setSelectedActions(false);
+            Button_Delete_All_Students_In_Group.Enabled = false;
+            // TODO: Check it
+            m_Faculty.deleteCurrentNode();
+            if (m_Faculty.isNotEmpty())
+            {
+                m_Faculty.setStart();
+                m_CurrentGroup = m_Faculty.currentData;
+            }
+            else
+            {
+                Button_Delete_All_Groups.Enabled = false;
+                deleteAllLists();
+                setStudentActions(false);
+                setSelectedActions(false);
+                m_CurrentGroup = null;
+                disableSubjectsButton();
+            }
+            showGroups();
+            showStudent();
+
+            if (--select != -1)
+            {
+                ListBox_List_Groups.SelectedIndex = select;
+                // TODO: Check it!
+                //ListBox_List_Groups_SelectedIndexChanged(this, null);
+            }
+            else if (ListBox_List_Groups.Items.Count > 0)
+            {
+                ListBox_List_Groups.SelectedIndex = 0;
+                // TODO: Check it!
+                //ListBox_List_Groups_SelectedIndexChanged(this, null);
+            }
+        }
+
+        private void Button_Delete_Selected_Click(object sender, EventArgs e)
+        {
+            doAction(deleteSelectedGroup, deleteSelectedStudent, "What would you like to delete?");
+        }
+
+        private void Button_Change_Selected_Click(object sender, EventArgs e)
+        {
+            doAction(changeSelectedGroup, changeSelectedStudent, "What would you like to change?");
+        }
+
+        private void Button_Delete_All_Students_In_Group_Click(object sender, EventArgs e)
+        {
+            m_CurrentGroup = m_Faculty.currentData;
+            m_CurrentGroup.deleteAllElements();
+            deleteStudentList();
+            setSelectedActions(true);
+            Button_Delete_All_Students_In_Group.Enabled = false;
+            disableSubjectsButton();
+        }
+
+        private void TextBox_Edit_Student_TextChanged(object sender, EventArgs e)
+        {
+            int index = ListBox_List_Students.FindString(((TextBox)(sender)).Text);
+            if (index != ListBox.NoMatches && ((TextBox)(sender)).TextLength > 0)
+            {
+                ListBox_List_Students.SetSelected(index, true);
+                ListBox_List_Students_SelectedIndexChanged(ListBox_List_Students, e);
+            }
+        }
+
+        private void TextBox_Edit_Student_Enter(object sender, EventArgs e)
+        {
+            if (TextBox_Edit_Student.Text.Length > 0)
+            {
+                TextBox_Edit_Student.SelectAll();
+                TextBox_Edit_Student_TextChanged(sender, e);
+            }
+        }
+
+        private void TextBox_Edit_Student_MouseDown(object sender, MouseEventArgs e)
+        {
+            TextBox_Edit_Student_Enter(sender, e);
+        }
+
+        private void TextBox_Edit_Group_TextChanged(object sender, EventArgs e)
+        {
+            int index = ListBox_List_Groups.FindString(((TextBox)(sender)).Text);
+            if (index != ListBox.NoMatches && ((TextBox)(sender)).TextLength > 0)
+            {
+                ListBox_List_Groups.SetSelected(index, true);
+                ListBox_List_Groups_SelectedIndexChanged(sender, e);
+            }
+        }
+
+        private void TextBox_Edit_Group_Enter(object sender, EventArgs e)
+        {
+            if (TextBox_Edit_Group.Text.Length > 0)
+            {
+                TextBox_Edit_Group.SelectAll();
+                TextBox_Edit_Group_TextChanged(sender, e);
+            }
+        }
+
+        private void TextBox_Edit_Group_MouseDown(object sender, MouseEventArgs e)
+        {
+            TextBox_Edit_Group_Enter(sender, e);
+        }
+
+        private void changeSelectedGroup()
+        {
+            m_InputNewName.Text = "Change The Name Of The Group";
+            if (m_InputNewName.ShowDialog() == DialogResult.OK)
+            {
+                m_CurrentGroup.nameList = m_InputNewName.nameOfTheList;
+                // TODO: Remake it!
+                m_Faculty.sort();
+                int select = changeItem(ListBox_List_Groups, ref m_MaxExtListGroup, m_CurrentGroup.nameList);
+                int selectStudent = m_CurrentStudent != null && m_CurrentGroup.findValue(m_CurrentStudent) ? changeItem(ListBox_List_Students, ref m_MaxExtListStud, getStudentString(m_CurrentStudent)) : -1;
+                showGroups();
+                ListBox_List_Groups.SelectedIndex = select;
+                ListBox_List_Groups_SelectedIndexChanged(this, null);
+                if (selectStudent != -1)
                 {
-                    if ((curExt = (int)TextRenderer.MeasureText(elem.ToString(), list.Font).Width) > maxExt)
-                    {
-                        maxExt = curExt;
-                    }
+                    ListBox_List_Students.SelectedIndex = selectStudent;
                 }
-                list.HorizontalExtent = maxExt;
             }
         }
 
+        private void changeSelectedStudent()
+        {
+            m_InputStudInfo.faculty = m_Faculty;
+            m_InputStudInfo.currentSelectedGroupIndex = getGroupSelect();
+            m_InputStudInfo.student = m_CurrentStudent;
+            m_InputStudInfo.changeFlag = true;
+            if (m_InputStudInfo.ShowDialog() == DialogResult.OK)
+            {
+                // TODO: Remake it!
+                m_CurrentGroup.sort();
+                int select = changeItem(ListBox_List_Students, ref m_MaxExtListStud, getStudentString(m_CurrentStudent));
+                showStudent();
+                ListBox_List_Students.SelectedIndex = select;
+                ListBox_List_Students_SelectedIndexChanged(this, null);
+            }
+        }
+
+        private void doAction(Action groupAction, Action studentAction, string actionName)
+        {
+            int selectedStudent = getStudentSelect();
+            int selectedGroup = getGroupSelect();
+            if (selectedGroup != -1 && selectedStudent != -1)
+            {
+                m_SelectAction.Text = actionName;
+                if (m_SelectAction.ShowDialog() == DialogResult.OK)
+                {
+                    if (m_SelectAction.answer == 0) // Group answer
+                    {
+                        groupAction();
+                    }
+                    else // Student answer
+                    {
+                        studentAction();
+                    }
+                    return;
+                }
+            }
+
+            if (selectedGroup != -1 && selectedStudent == -1)
+            {
+                groupAction();
+                return;
+            }
+
+            if (selectedGroup == -1 && selectedStudent != -1)
+            {
+                studentAction();
+            }
+        }
+
+        private void Button_Input_Subjects_And_Marks_Click(object sender, EventArgs e)
+        {
+            m_InputSubjects.ShowDialog();
+        }
     }
 }

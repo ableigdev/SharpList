@@ -113,6 +113,7 @@
             this.Button_Delete_All_Students_In_Group.TabIndex = 4;
             this.Button_Delete_All_Students_In_Group.Text = "Delete All &Students In Group";
             this.Button_Delete_All_Students_In_Group.UseVisualStyleBackColor = true;
+            this.Button_Delete_All_Students_In_Group.Click += new System.EventHandler(this.Button_Delete_All_Students_In_Group_Click);
             // 
             // Button_Change_Selected
             // 
@@ -123,6 +124,7 @@
             this.Button_Change_Selected.TabIndex = 3;
             this.Button_Change_Selected.Text = "C&hange Selected...";
             this.Button_Change_Selected.UseVisualStyleBackColor = true;
+            this.Button_Change_Selected.Click += new System.EventHandler(this.Button_Change_Selected_Click);
             // 
             // Button_Delete_Selected
             // 
@@ -133,6 +135,7 @@
             this.Button_Delete_Selected.TabIndex = 2;
             this.Button_Delete_Selected.Text = "&Delete Selected...";
             this.Button_Delete_Selected.UseVisualStyleBackColor = true;
+            this.Button_Delete_Selected.Click += new System.EventHandler(this.Button_Delete_Selected_Click);
             // 
             // Button_Add_Group
             // 
@@ -164,6 +167,7 @@
             this.Button_Input_Subjects_And_Marks.TabIndex = 8;
             this.Button_Input_Subjects_And_Marks.Text = "Input Subjects And &Marks...";
             this.Button_Input_Subjects_And_Marks.UseVisualStyleBackColor = true;
+            this.Button_Input_Subjects_And_Marks.Click += new System.EventHandler(this.Button_Input_Subjects_And_Marks_Click);
             // 
             // Button_Exit
             // 
@@ -190,6 +194,9 @@
             this.TextBox_Edit_Group.Name = "TextBox_Edit_Group";
             this.TextBox_Edit_Group.Size = new System.Drawing.Size(120, 20);
             this.TextBox_Edit_Group.TabIndex = 11;
+            this.TextBox_Edit_Group.TextChanged += new System.EventHandler(this.TextBox_Edit_Group_TextChanged);
+            this.TextBox_Edit_Group.Enter += new System.EventHandler(this.TextBox_Edit_Group_Enter);
+            this.TextBox_Edit_Group.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TextBox_Edit_Group_MouseDown);
             // 
             // ListBox_List_Groups
             // 
@@ -218,6 +225,9 @@
             this.TextBox_Edit_Student.Name = "TextBox_Edit_Student";
             this.TextBox_Edit_Student.Size = new System.Drawing.Size(177, 20);
             this.TextBox_Edit_Student.TabIndex = 14;
+            this.TextBox_Edit_Student.TextChanged += new System.EventHandler(this.TextBox_Edit_Student_TextChanged);
+            this.TextBox_Edit_Student.Enter += new System.EventHandler(this.TextBox_Edit_Student_Enter);
+            this.TextBox_Edit_Student.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TextBox_Edit_Student_MouseDown);
             // 
             // ListBox_List_Students
             // 
@@ -228,6 +238,7 @@
             this.ListBox_List_Students.Name = "ListBox_List_Students";
             this.ListBox_List_Students.Size = new System.Drawing.Size(177, 264);
             this.ListBox_List_Students.TabIndex = 15;
+            this.ListBox_List_Students.SelectedIndexChanged += new System.EventHandler(this.ListBox_List_Students_SelectedIndexChanged);
             // 
             // Label_Student_Info
             // 
@@ -325,6 +336,7 @@
             this.MaximumSize = new System.Drawing.Size(736, 380);
             this.MinimumSize = new System.Drawing.Size(736, 380);
             this.Name = "StudentsGUIDlg";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "StudentsGUIDlg";
             this.GroupBox_Actions.ResumeLayout(false);
             this.GroupBox_Faculty_Actions.ResumeLayout(false);
