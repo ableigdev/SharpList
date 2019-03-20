@@ -91,6 +91,8 @@
     <Compile Include="AddSubjectAndMarkForStudent.Designer.cs">
       <DependentUpon>AddSubjectAndMarkForStudent.cs</DependentUpon>
     </Compile>
+    <Compile Include="Common.cs" />
+    <Compile Include="CommonCorrectScroll.cs" />
     <Compile Include="InputName.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -109,6 +111,7 @@
     <Compile Include="InputSubjectsAndMarks.Designer.cs">
       <DependentUpon>InputSubjectsAndMarks.cs</DependentUpon>
     </Compile>
+    <Compile Include="Iterator.cs" />
     <Compile Include="List.cs" />
     <Compile Include="NameList.cs" />
     <Compile Include="Program.cs" />
