@@ -40,6 +40,7 @@
             this.Button_Group.TabIndex = 0;
             this.Button_Group.Text = "&Group";
             this.Button_Group.UseVisualStyleBackColor = true;
+            this.Button_Group.Click += new System.EventHandler(this.Button_Group_Click);
             // 
             // Button_Student
             // 
@@ -49,19 +50,24 @@
             this.Button_Student.TabIndex = 1;
             this.Button_Student.Text = "&Student";
             this.Button_Student.UseVisualStyleBackColor = true;
+            this.Button_Student.Click += new System.EventHandler(this.Button_Student_Click);
             // 
             // SelectAction
             // 
+            this.AcceptButton = this.Button_Student;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(250, 52);
             this.Controls.Add(this.Button_Student);
             this.Controls.Add(this.Button_Group);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(266, 91);
             this.MinimumSize = new System.Drawing.Size(266, 91);
             this.Name = "SelectAction";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Select Action";
+            this.Load += new System.EventHandler(this.SelectAction_Load);
             this.ResumeLayout(false);
 
         }
