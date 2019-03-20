@@ -32,11 +32,11 @@
             this.ComboBox_Groups = new System.Windows.Forms.ComboBox();
             this.Label_Choose_Group_To_Add = new System.Windows.Forms.Label();
             this.GroupBox_Add_Student_Info = new System.Windows.Forms.GroupBox();
+            this.TextBox_Average_Mark = new System.Windows.Forms.MaskedTextBox();
+            this.TextBox_Birth_Year = new System.Windows.Forms.MaskedTextBox();
             this.Button_Cancel = new System.Windows.Forms.Button();
             this.Button_OK = new System.Windows.Forms.Button();
             this.Button_Next = new System.Windows.Forms.Button();
-            this.TextBox_Average_Mark = new System.Windows.Forms.TextBox();
-            this.TextBox_Birth_Year = new System.Windows.Forms.TextBox();
             this.TextBox_Lastname = new System.Windows.Forms.TextBox();
             this.TextBox_Name = new System.Windows.Forms.TextBox();
             this.TextBox_Surname = new System.Windows.Forms.TextBox();
@@ -80,11 +80,11 @@
             // 
             // GroupBox_Add_Student_Info
             // 
+            this.GroupBox_Add_Student_Info.Controls.Add(this.TextBox_Average_Mark);
+            this.GroupBox_Add_Student_Info.Controls.Add(this.TextBox_Birth_Year);
             this.GroupBox_Add_Student_Info.Controls.Add(this.Button_Cancel);
             this.GroupBox_Add_Student_Info.Controls.Add(this.Button_OK);
             this.GroupBox_Add_Student_Info.Controls.Add(this.Button_Next);
-            this.GroupBox_Add_Student_Info.Controls.Add(this.TextBox_Average_Mark);
-            this.GroupBox_Add_Student_Info.Controls.Add(this.TextBox_Birth_Year);
             this.GroupBox_Add_Student_Info.Controls.Add(this.TextBox_Lastname);
             this.GroupBox_Add_Student_Info.Controls.Add(this.TextBox_Name);
             this.GroupBox_Add_Student_Info.Controls.Add(this.TextBox_Surname);
@@ -99,8 +99,29 @@
             this.GroupBox_Add_Student_Info.TabIndex = 1;
             this.GroupBox_Add_Student_Info.TabStop = false;
             // 
+            // TextBox_Average_Mark
+            // 
+            this.TextBox_Average_Mark.Location = new System.Drawing.Point(307, 97);
+            this.TextBox_Average_Mark.Mask = "0.00";
+            this.TextBox_Average_Mark.Name = "TextBox_Average_Mark";
+            this.TextBox_Average_Mark.Size = new System.Drawing.Size(100, 20);
+            this.TextBox_Average_Mark.TabIndex = 10;
+            this.TextBox_Average_Mark.Click += new System.EventHandler(this.TextBox_Average_Mark_Click);
+            this.TextBox_Average_Mark.Enter += new System.EventHandler(this.TextBox_Average_Mark_Enter);
+            // 
+            // TextBox_Birth_Year
+            // 
+            this.TextBox_Birth_Year.Location = new System.Drawing.Point(110, 97);
+            this.TextBox_Birth_Year.Mask = "0000";
+            this.TextBox_Birth_Year.Name = "TextBox_Birth_Year";
+            this.TextBox_Birth_Year.Size = new System.Drawing.Size(100, 20);
+            this.TextBox_Birth_Year.TabIndex = 8;
+            this.TextBox_Birth_Year.Click += new System.EventHandler(this.TextBox_Birth_Year_Click);
+            this.TextBox_Birth_Year.Enter += new System.EventHandler(this.TextBox_Birth_Year_Enter);
+            // 
             // Button_Cancel
             // 
+            this.Button_Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.Button_Cancel.Location = new System.Drawing.Point(332, 133);
             this.Button_Cancel.Name = "Button_Cancel";
             this.Button_Cancel.Size = new System.Drawing.Size(75, 23);
@@ -129,29 +150,14 @@
             this.Button_Next.UseVisualStyleBackColor = true;
             this.Button_Next.Click += new System.EventHandler(this.Button_Next_Click);
             // 
-            // TextBox_Average_Mark
-            // 
-            this.TextBox_Average_Mark.Location = new System.Drawing.Point(307, 97);
-            this.TextBox_Average_Mark.Name = "TextBox_Average_Mark";
-            this.TextBox_Average_Mark.Size = new System.Drawing.Size(100, 20);
-            this.TextBox_Average_Mark.TabIndex = 10;
-            this.TextBox_Average_Mark.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_Average_Mark_KeyPress);
-            // 
-            // TextBox_Birth_Year
-            // 
-            this.TextBox_Birth_Year.Location = new System.Drawing.Point(110, 97);
-            this.TextBox_Birth_Year.MaxLength = 4;
-            this.TextBox_Birth_Year.Name = "TextBox_Birth_Year";
-            this.TextBox_Birth_Year.Size = new System.Drawing.Size(100, 20);
-            this.TextBox_Birth_Year.TabIndex = 8;
-            this.TextBox_Birth_Year.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_Birth_Year_KeyPress);
-            // 
             // TextBox_Lastname
             // 
             this.TextBox_Lastname.Location = new System.Drawing.Point(110, 71);
             this.TextBox_Lastname.Name = "TextBox_Lastname";
             this.TextBox_Lastname.Size = new System.Drawing.Size(297, 20);
             this.TextBox_Lastname.TabIndex = 6;
+            this.TextBox_Lastname.Click += new System.EventHandler(this.TextBox_Lastname_Click);
+            this.TextBox_Lastname.Enter += new System.EventHandler(this.TextBox_Lastname_Enter);
             // 
             // TextBox_Name
             // 
@@ -159,6 +165,8 @@
             this.TextBox_Name.Name = "TextBox_Name";
             this.TextBox_Name.Size = new System.Drawing.Size(297, 20);
             this.TextBox_Name.TabIndex = 4;
+            this.TextBox_Name.Click += new System.EventHandler(this.TextBox_Name_Click);
+            this.TextBox_Name.Enter += new System.EventHandler(this.TextBox_Name_Enter);
             // 
             // TextBox_Surname
             // 
@@ -166,6 +174,8 @@
             this.TextBox_Surname.Name = "TextBox_Surname";
             this.TextBox_Surname.Size = new System.Drawing.Size(297, 20);
             this.TextBox_Surname.TabIndex = 2;
+            this.TextBox_Surname.Click += new System.EventHandler(this.TextBox_Surname_Click);
+            this.TextBox_Surname.Enter += new System.EventHandler(this.TextBox_Surname_Enter);
             // 
             // Label_Average_Mark
             // 
@@ -214,8 +224,10 @@
             // 
             // InputStudent
             // 
+            this.AcceptButton = this.Button_Next;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.Button_Cancel;
             this.ClientSize = new System.Drawing.Size(437, 249);
             this.Controls.Add(this.GroupBox_Add_Student_Info);
             this.Controls.Add(this.GroupBox_Current_Group);
@@ -224,6 +236,7 @@
             this.MaximumSize = new System.Drawing.Size(453, 288);
             this.MinimumSize = new System.Drawing.Size(453, 288);
             this.Name = "InputStudent";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "InputStudent";
             this.Load += new System.EventHandler(this.InputStudent_Load);
             this.GroupBox_Current_Group.ResumeLayout(false);
@@ -240,8 +253,6 @@
         private System.Windows.Forms.ComboBox ComboBox_Groups;
         private System.Windows.Forms.Label Label_Choose_Group_To_Add;
         private System.Windows.Forms.GroupBox GroupBox_Add_Student_Info;
-        private System.Windows.Forms.TextBox TextBox_Average_Mark;
-        private System.Windows.Forms.TextBox TextBox_Birth_Year;
         private System.Windows.Forms.TextBox TextBox_Lastname;
         private System.Windows.Forms.TextBox TextBox_Name;
         private System.Windows.Forms.TextBox TextBox_Surname;
@@ -253,5 +264,7 @@
         private System.Windows.Forms.Button Button_Cancel;
         private System.Windows.Forms.Button Button_OK;
         private System.Windows.Forms.Button Button_Next;
+        private System.Windows.Forms.MaskedTextBox TextBox_Birth_Year;
+        private System.Windows.Forms.MaskedTextBox TextBox_Average_Mark;
     }
 }

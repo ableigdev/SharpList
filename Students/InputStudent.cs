@@ -12,10 +12,18 @@ namespace Students
 {
     public partial class InputStudent : Form
     {
+        private NameList<NameList<Student>> m_Faculty;
+        private NameList<Student> m_Group;
+        private Student m_Student = new Student();
+        private Student m_WorkStudent;
+        private bool m_ChangeFlag;
+        private bool m_IsModify;
+        private int m_CurrentGroupIndex;
+
         public InputStudent()
         {
             InitializeComponent();
-            m_Student = new Student();
+            //m_Student = new Student();
             m_WorkStudent = new Student();
         }
 
@@ -65,8 +73,7 @@ namespace Students
 
         private void setActiveSurname()
         {
-            this.ActiveControl = TextBox_Surname;
-            TextBox_Surname.SelectAll();
+            activeEdit(TextBox_Surname);
         }
 
         private bool checkConstruction()
@@ -89,8 +96,6 @@ namespace Students
                 }
                 return true;
             }
-            MessageBox.Show("Surname or name is empty", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-            this.ActiveControl = m_Student.surname.Length == 0 ? TextBox_Surname : TextBox_Name;
             m_IsModify = true;
             return false;
         }
@@ -135,20 +140,52 @@ namespace Students
             string surname = TextBox_Surname.Text.Trim();
             string name = TextBox_Name.Text.Trim();
             string lastname = TextBox_Lastname.Text.Trim();
-            short year = (short)Int32.Parse(TextBox_Birth_Year.Text);
-            float mark = float.Parse(TextBox_Average_Mark.Text, System.Globalization.CultureInfo.InvariantCulture);
-            bool flag = false;
-            if ((flag = year >= 1900 && year <= 2100) && (mark <= 5.0 && mark >= 0.0))
+
+            if (surname.Length > 0 && name.Length > 0)
             {
+                m_Student = new Student();
                 m_Student.surname = surname;
                 m_Student.name = name;
                 m_Student.lastname = lastname;
-                m_Student.birthYear = year;
-                m_Student.mark = mark;
+
+                ushort year;
+                if (System.UInt16.TryParse(TextBox_Birth_Year.Text, out year))
+                {
+                    if (year >= 1900 && year <= 2100)
+                    {
+                        m_Student.birthYear = (short)year;
+                    }
+                    else
+                    {
+                        return showMessageHelper("Value of years must be from 1900 to 2100");
+                    }
+                }
+                else
+                {
+                    return showMessageHelper("Birth Year field is empty!");
+                }
+
+                float mark;
+                if (System.Single.TryParse(TextBox_Average_Mark.Text, out mark))
+                {
+                    if (mark <= 5.0 && mark >= 0.0)
+                    {
+                        m_Student.mark = mark;
+                    }
+                    else
+                    {
+                        return showMessageHelper("Value of marks must be from 0.0 to 5.0");
+                    }
+                }
+                else
+                {
+                    return showMessageHelper("Mark field is empty!");
+                }
                 return true;
             }
-
-            return flag ? showMessageHelper("Value of marks must be from 0.0 to 5.0") : showMessageHelper("Value of years must be from 1900 to 2100");
+            MessageBox.Show("Surname or name is empty", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            this.ActiveControl = surname.Length == 0 ? TextBox_Surname : TextBox_Name;
+            return false;
         }
 
         private bool showMessageHelper(string str)
@@ -156,14 +193,6 @@ namespace Students
             MessageBox.Show(str, "Invalid value of numbers", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return false;
         }
-
-        private NameList<NameList<Student>> m_Faculty;
-        private NameList<Student> m_Group;
-        private Student m_Student = new Student();
-        private Student m_WorkStudent;
-        private bool m_ChangeFlag;
-        private bool m_IsModify;
-        private int m_CurrentGroupIndex;
 
         private void Button_Next_Click(object sender, EventArgs e)
         {
@@ -192,25 +221,60 @@ namespace Students
             Close();
         }
 
-        private void TextBox_Birth_Year_KeyPress(object sender, KeyPressEventArgs e)
+        private void activeEdit(TextBoxBase edit)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
-            {
-                e.Handled = true;
-            }
+            edit.Focus();
+            edit.SelectAll();
         }
 
-        private void TextBox_Average_Mark_KeyPress(object sender, KeyPressEventArgs e)
+        private void TextBox_Surname_Enter(object sender, EventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
-            {
-                e.Handled = true;
-            }
+            activeEdit(TextBox_Surname);
+        }
 
-            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
-            {
-                e.Handled = true;
-            }
+        private void TextBox_Surname_Click(object sender, EventArgs e)
+        {
+            activeEdit(TextBox_Surname);
+        }
+
+        private void TextBox_Name_Click(object sender, EventArgs e)
+        {
+            activeEdit(TextBox_Name);
+        }
+
+        private void TextBox_Name_Enter(object sender, EventArgs e)
+        {
+            activeEdit(TextBox_Name);
+        }
+
+        private void TextBox_Lastname_Enter(object sender, EventArgs e)
+        {
+            activeEdit(TextBox_Lastname);
+        }
+
+        private void TextBox_Lastname_Click(object sender, EventArgs e)
+        {
+            activeEdit(TextBox_Lastname);
+        }
+
+        private void TextBox_Birth_Year_Enter(object sender, EventArgs e)
+        {
+            activeEdit(TextBox_Birth_Year);
+        }
+
+        private void TextBox_Birth_Year_Click(object sender, EventArgs e)
+        {
+            activeEdit(TextBox_Birth_Year);
+        }
+
+        private void TextBox_Average_Mark_Enter(object sender, EventArgs e)
+        {
+            activeEdit(TextBox_Average_Mark);
+        }
+
+        private void TextBox_Average_Mark_Click(object sender, EventArgs e)
+        {
+            activeEdit(TextBox_Average_Mark);
         }
     }
 }
