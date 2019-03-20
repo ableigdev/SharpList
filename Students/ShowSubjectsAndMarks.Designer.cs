@@ -88,6 +88,7 @@
             // 
             // ShowSubjectsAndMarks
             // 
+            this.AcceptButton = this.Button_Delete_Subjects_In_Show_Window;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(311, 261);
@@ -97,10 +98,12 @@
             this.Controls.Add(this.ListBox_Subjects_In_Show_Window);
             this.Controls.Add(this.TextBox_Find_Subject_In_Show_Window);
             this.Controls.Add(this.Label_Subjects);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(327, 300);
             this.MinimumSize = new System.Drawing.Size(327, 300);
             this.Name = "ShowSubjectsAndMarks";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Show Subjects And Marks";
             this.ResumeLayout(false);
             this.PerformLayout();

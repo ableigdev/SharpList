@@ -117,6 +117,7 @@
             this.Controls.Add(this.Label_Choose_Mark);
             this.Controls.Add(this.TextBox_Find_Subject);
             this.Controls.Add(this.Label_Choose_Subject);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(300, 300);
             this.MinimumSize = new System.Drawing.Size(300, 300);
