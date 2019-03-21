@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Students
 {
-    class Iterator<T> where T : NameList<T>, new()
+    class Iterator<T> where T : IComparable<T>, new()
     {
         public Iterator(NameList<T> list)
         {
