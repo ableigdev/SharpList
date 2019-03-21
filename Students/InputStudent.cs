@@ -69,6 +69,10 @@ namespace Students
             {
                 m_Student = value;
             }
+            get
+            {
+                return m_Student;
+            }
         }
 
         private void setActiveSurname()
@@ -103,6 +107,8 @@ namespace Students
         private void InputStudent_Load(object sender, EventArgs e)
         {
             ComboBox_Groups.Items.Clear();
+            Button_Next.Enabled = !m_ChangeFlag;
+            ComboBox_Groups.Enabled = !m_ChangeFlag;
             // Add mode
             if (!m_ChangeFlag)
             {
@@ -114,10 +120,13 @@ namespace Students
             // Change mode
             if (m_ChangeFlag)
             {
+                TextBox_Surname.Text = m_Student.surname;
+                TextBox_Name.Text = m_Student.name;
+                TextBox_Lastname.Text = m_Student.lastname;
+                TextBox_Birth_Year.Text = m_Student.birthYear.ToString();
+                TextBox_Average_Mark.Text = m_Student.mark.ToString();
                 m_WorkStudent = m_Student;
                 m_IsModify = false;
-                Button_Next.Enabled = false;
-                ComboBox_Groups.Enabled = false;
                 this.Text = "Change Student Information";
             }
 
