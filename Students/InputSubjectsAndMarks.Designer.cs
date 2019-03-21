@@ -129,6 +129,7 @@
             this.ListBox_All_Subjects.Name = "ListBox_All_Subjects";
             this.ListBox_All_Subjects.Size = new System.Drawing.Size(258, 160);
             this.ListBox_All_Subjects.TabIndex = 8;
+            this.ListBox_All_Subjects.SelectedIndexChanged += new System.EventHandler(this.ListBox_All_Subjects_SelectedIndexChanged);
             // 
             // ListBox_All_Marks
             // 
@@ -137,6 +138,7 @@
             this.ListBox_All_Marks.Name = "ListBox_All_Marks";
             this.ListBox_All_Marks.Size = new System.Drawing.Size(93, 160);
             this.ListBox_All_Marks.TabIndex = 9;
+            this.ListBox_All_Marks.SelectedIndexChanged += new System.EventHandler(this.ListBox_All_Marks_SelectedIndexChanged);
             // 
             // Button_Save_Subjects
             // 
@@ -146,6 +148,7 @@
             this.Button_Save_Subjects.TabIndex = 10;
             this.Button_Save_Subjects.Text = "&Save";
             this.Button_Save_Subjects.UseVisualStyleBackColor = true;
+            this.Button_Save_Subjects.Click += new System.EventHandler(this.Button_Save_Subjects_Click);
             // 
             // Button_Delete_Subject
             // 
@@ -156,6 +159,7 @@
             this.Button_Delete_Subject.TabIndex = 11;
             this.Button_Delete_Subject.Text = "Delete S&ubject";
             this.Button_Delete_Subject.UseVisualStyleBackColor = true;
+            this.Button_Delete_Subject.Click += new System.EventHandler(this.Button_Delete_Subject_Click);
             // 
             // Button_Delete_Mark
             // 
@@ -166,6 +170,7 @@
             this.Button_Delete_Mark.TabIndex = 12;
             this.Button_Delete_Mark.Text = "Delete M&ark";
             this.Button_Delete_Mark.UseVisualStyleBackColor = true;
+            this.Button_Delete_Mark.Click += new System.EventHandler(this.Button_Delete_Mark_Click);
             // 
             // TextBox_Input_Mark
             // 
@@ -196,6 +201,7 @@
             this.Name = "InputSubjectsAndMarks";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Input Subjects And Marks";
+            this.Load += new System.EventHandler(this.InputSubjectsAndMarks_Load);
             this.GroupBox_Add_Data.ResumeLayout(false);
             this.GroupBox_Add_Data.PerformLayout();
             this.ResumeLayout(false);

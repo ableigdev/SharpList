@@ -85,5 +85,103 @@ namespace Students
             }
             activeEdit(TextBox_Input_Subject);
         }
+
+        private void InputSubjectsAndMarks_Load(object sender, EventArgs e)
+        {
+            Button_Delete_Subject.Enabled = false;
+            Button_Delete_Mark.Enabled = false;
+            ListBox_All_Marks.Items.Clear();
+            ListBox_All_Subjects.Items.Clear();
+            TextBox_Input_Mark.Text = "";
+            TextBox_Input_Subject.Text = "";
+
+            if (m_Subjects.isNotEmpty())
+            {
+                for (int i = 0; i < m_Subjects.size; ++i, ++m_Subjects)
+                {
+                    var str = m_Subjects.currentData;
+                    ListBox_All_Subjects.Items.Add(str);
+                    CommonCorrectScroll.correctHScrlAdd(ListBox_All_Subjects, str, ref m_MaxExtSubjectList);
+                }
+                m_Subjects.setStart();
+            }
+
+            if (m_Marks.isNotEmpty())
+            {
+                for (int i = 0; i < m_Marks.size; ++i, ++m_Marks)
+                {
+                    var mark = m_Marks.currentData;
+                    ListBox_All_Marks.Items.Add(mark);
+                    CommonCorrectScroll.correctHScrlAdd(ListBox_All_Marks, mark.ToString(), ref m_MaxExtMarkList);
+                }
+                m_Marks.setStart();
+            }
+        }
+
+        public List<string> listOfTheSubjects
+        {
+            get
+            {
+                return m_Subjects;
+            }
+        }
+
+        public List<float> listOfTheMarks
+        {
+            get
+            {
+                return m_Marks;
+            }
+        }
+
+        private void ListBox_All_Subjects_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int selected = ListBox_All_Subjects.SelectedIndex;
+            if (selected != -1 && selected != m_OldSubjectSelect)
+            {
+                SecondCommon<string>.for_each_listbox(m_Subjects, ListBox_All_Subjects, ref m_OldSubjectSelect, ref selected);
+            }
+            Button_Delete_Subject.Enabled = true;
+        }
+
+        private void ListBox_All_Marks_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int selected = ListBox_All_Marks.SelectedIndex;
+            if (selected != -1 && selected != m_OldMarkSelect)
+            {
+                SecondCommon<float>.for_each_listbox(m_Marks, ListBox_All_Marks, ref m_OldMarkSelect, ref selected);
+            }
+            Button_Delete_Mark.Enabled = true; 
+        }
+
+        private void Button_Delete_Subject_Click(object sender, EventArgs e)
+        {
+            int selected = ListBox_All_Subjects.SelectedIndex;
+            m_Subjects.deleteCurrentNode();
+            string str = ListBox_All_Subjects.Items[selected].ToString();
+            ListBox_All_Subjects.Items.RemoveAt(selected);
+            CommonCorrectScroll.corrctHScrlDel(ListBox_All_Subjects, str, ref m_MaxExtSubjectList);
+            m_Subjects.setStart();
+            Button_Delete_Subject.Enabled = false;
+        }
+
+        private void Button_Delete_Mark_Click(object sender, EventArgs e)
+        {
+            int selected = ListBox_All_Marks.SelectedIndex;
+            float tempValue = m_Marks.currentData;
+            m_Marks.deleteElement(tempValue);
+            string str = ListBox_All_Marks.Items[selected].ToString();
+            ListBox_All_Marks.Items.RemoveAt(selected);
+            CommonCorrectScroll.corrctHScrlDel(ListBox_All_Marks, str, ref m_MaxExtMarkList);
+            m_Marks.setStart();
+            Button_Delete_Mark.Enabled = false;
+        }
+
+        private void Button_Save_Subjects_Click(object sender, EventArgs e)
+        {
+            m_Subjects.setStart();
+            DialogResult = DialogResult.OK;
+            Close();
+        }
     }
 }
