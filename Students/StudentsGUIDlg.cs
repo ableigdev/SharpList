@@ -136,6 +136,7 @@ namespace Students
         private void Button_Create_Faculty_Click(object sender, EventArgs e)
         {
             m_InputNewName.Text = "Enter New Name of Faculty";
+            m_InputNewName.isEdit = false;
 
             deleteAllLists();
 
@@ -148,6 +149,7 @@ namespace Students
 
         private void Button_Change_Faculty_Name_Click(object sender, EventArgs e)
         {
+            m_InputNewName.isEdit = true;
             m_InputNewName.nameOfTheList = m_Faculty.nameList;
             m_InputNewName.ShowDialog();
         }
@@ -201,22 +203,9 @@ namespace Students
             int selected = getGroupSelect();
             if (selected != ListBox.NoMatches && selected != m_OldGroupSelect)
             {
-                // TODO: Solve this issue:
-                //Iterator<NameList<Student>> it = new Iterator<NameList<Student>>(m_Faculty);
-                //Common<NameList<Student>>.for_each_listbox(iterator, ListBox_List_Groups, ref m_OldGroupSelect, selected);
-
-                int counter = 0;
-                // TODO: Refactor this part of code 
-                // Because it has danger situation
-                // m_CurrentGroup has reference on the temporary node
-                foreach(var tempGroup in m_Faculty.chooseOrder())
-                {
-                    m_CurrentGroup = tempGroup;
-                    if (counter++ == selected)
-                    {
-                        break;
-                    }
-                }
+                Iterator<NameList<Student>> it = new Iterator<NameList<Student>>(m_Faculty);
+                Common<NameList<Student>>.for_each_listbox(it, ListBox_List_Groups, ref m_OldGroupSelect, ref selected);
+                m_CurrentGroup = m_Faculty.currentData;
                 showStudent();
                 setSelectedActions(true);
                 Button_Delete_All_Students_In_Group.Enabled = m_Faculty.currentData.isNotEmpty();
@@ -267,6 +256,7 @@ namespace Students
         {
             NameList<Student> newGroup = new NameList<Student>();
             m_InputNewName.Text = "Enter New Name of Group";
+            m_InputNewName.isEdit = false;
 
             string buf = "";
             int select = getGroupSelect();
@@ -333,8 +323,8 @@ namespace Students
             if (currentSelect != ListBox.NoMatches)
             {
                 // TODO: correct scroller and check it
-                //listBox.Items.RemoveAt(currentSelect);
                 CommonCorrectScroll.corrctHScrlDel(listBox, listBox.Items[currentSelect].ToString(), ref maxExtCx);
+                listBox.Items.RemoveAt(currentSelect);
                 listBox.SelectedIndex = (currentSelect = listBox.Items.Add(name));
                 CommonCorrectScroll.correctHScrlAdd(listBox, listBox.Items[currentSelect].ToString(), ref maxExtCx);
             }
@@ -422,9 +412,8 @@ namespace Students
 
             if (selected != -1 && selected != m_OldStudSelect)
             {
-                // TODO: Remake it!
-                //Iterator<Student> iter = new Iterator<Student>(m_CurrentGroup);
-                //Common<Student>.for_each_listbox(iter, ListBox_List_Groups, m_OldStudSelect, selected);
+                Iterator<Student> iter = new Iterator<Student>(m_CurrentGroup);
+                Common<Student>.for_each_listbox(iter, ListBox_List_Groups, ref m_OldStudSelect, ref selected);
                 m_CurrentStudent = m_CurrentGroup.currentData;
                 showStudentInformation(m_CurrentStudent);
                 setSelectedActions(true);
@@ -541,16 +530,19 @@ namespace Students
         private void changeSelectedGroup()
         {
             m_InputNewName.Text = "Change The Name Of The Group";
+            m_InputNewName.nameOfTheList = m_CurrentGroup.nameList;
+            m_InputNewName.isEdit = true;
             if (m_InputNewName.ShowDialog() == DialogResult.OK)
             {
                 m_CurrentGroup.nameList = m_InputNewName.nameOfTheList;
                 // TODO: Remake it!
                 m_Faculty.sort();
+                //ListBox_List_Groups.Items.RemoveAt(getGroupSelect());
                 int select = changeItem(ListBox_List_Groups, ref m_MaxExtListGroup, m_CurrentGroup.nameList);
                 int selectStudent = m_CurrentStudent != null && m_CurrentGroup.findValue(m_CurrentStudent) ? changeItem(ListBox_List_Students, ref m_MaxExtListStud, getStudentString(m_CurrentStudent)) : -1;
                 showGroups();
                 ListBox_List_Groups.SelectedIndex = select;
-                ListBox_List_Groups_SelectedIndexChanged(this, null);
+                //ListBox_List_Groups_SelectedIndexChanged(this, null);
                 if (selectStudent != -1)
                 {
                     ListBox_List_Students.SelectedIndex = selectStudent;
@@ -562,12 +554,14 @@ namespace Students
         {
             m_InputStudInfo.faculty = m_Faculty;
             m_InputStudInfo.currentSelectedGroupIndex = getGroupSelect();
-            m_InputStudInfo.student = m_CurrentStudent;
+            m_InputStudInfo.student = m_CurrentGroup.currentData;
             m_InputStudInfo.changeFlag = true;
             if (m_InputStudInfo.ShowDialog() == DialogResult.OK)
             {
+                m_CurrentGroup.currentData = m_CurrentStudent = m_InputStudInfo.student;
                 // TODO: Remake it!
                 m_CurrentGroup.sort();
+                ListBox_List_Students.Items.RemoveAt(getStudentSelect());
                 int select = changeItem(ListBox_List_Students, ref m_MaxExtListStud, getStudentString(m_CurrentStudent));
                 showStudent();
                 ListBox_List_Students.SelectedIndex = select;
