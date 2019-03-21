@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Students
 {
-    public class List<NODETYPE> : IEnumerable<NODETYPE>, IComparable<List<NODETYPE>>, ICloneable where NODETYPE : IComparable<NODETYPE>, new()
+    public class List<NODETYPE> : IEnumerable<NODETYPE>, IComparable<List<NODETYPE>>, ICloneable where NODETYPE : IComparable<NODETYPE>
     {
         private class ListNode
         {
