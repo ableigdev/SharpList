@@ -49,6 +49,8 @@
             this.TextBox_New_Name.Name = "TextBox_New_Name";
             this.TextBox_New_Name.Size = new System.Drawing.Size(338, 20);
             this.TextBox_New_Name.TabIndex = 1;
+            this.TextBox_New_Name.Click += new System.EventHandler(this.TextBox_New_Name_Click);
+            this.TextBox_New_Name.Enter += new System.EventHandler(this.TextBox_New_Name_Enter);
             // 
             // Button_OK
             // 

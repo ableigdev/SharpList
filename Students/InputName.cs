@@ -13,6 +13,7 @@ namespace Students
     public partial class InputName : Form
     {
         private string m_Name;
+        private bool m_IsEdit = false;
 
         public InputName()
         {
@@ -31,6 +32,14 @@ namespace Students
             get
             {
                 return m_Name;
+            }
+        }
+
+        public bool isEdit
+        {
+            set
+            {
+                m_IsEdit = value;
             }
         }
 
@@ -57,7 +66,26 @@ namespace Students
 
         private void InputName_Load(object sender, EventArgs e)
         {
-            this.TextBox_New_Name.Text = "";
+            if (!m_IsEdit)
+            {
+                this.TextBox_New_Name.Text = "";
+            }
+        }
+
+        private void activeEdit(TextBoxBase edit)
+        {
+            edit.Focus();
+            edit.SelectAll();
+        }
+
+        private void TextBox_New_Name_Enter(object sender, EventArgs e)
+        {
+            activeEdit(TextBox_New_Name);
+        }
+
+        private void TextBox_New_Name_Click(object sender, EventArgs e)
+        {
+            activeEdit(TextBox_New_Name);
         }
     }
 }
