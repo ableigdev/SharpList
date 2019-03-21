@@ -116,6 +116,7 @@
     <Compile Include="NameList.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SecondCommon.cs" />
     <Compile Include="SelectAction.cs">
       <SubType>Form</SubType>
     </Compile>
