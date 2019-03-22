@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace Students
 {
-    class CommonCorrectScroll
+    class CommonFunctions
     {
         public static void correctHScrlAdd(ListBox list, string currString, ref int maxExt)
         {
@@ -33,6 +33,12 @@ namespace Students
                 }
                 list.HorizontalExtent = maxExt;
             }
+        }
+
+        public static void activeEdit(TextBoxBase edit)
+        {
+            edit.Focus();
+            edit.SelectAll();
         }
     }
 }
