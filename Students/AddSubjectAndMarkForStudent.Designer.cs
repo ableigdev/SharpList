@@ -53,6 +53,9 @@
             this.TextBox_Find_Subject.Name = "TextBox_Find_Subject";
             this.TextBox_Find_Subject.Size = new System.Drawing.Size(141, 20);
             this.TextBox_Find_Subject.TabIndex = 1;
+            this.TextBox_Find_Subject.Click += new System.EventHandler(this.TextBox_Find_Subject_Click);
+            this.TextBox_Find_Subject.TextChanged += new System.EventHandler(this.TextBox_Find_Subject_TextChanged);
+            this.TextBox_Find_Subject.Enter += new System.EventHandler(this.TextBox_Find_Subject_Enter);
             // 
             // Label_Choose_Mark
             // 
@@ -69,6 +72,9 @@
             this.TextBox_Find_Mark.Name = "TextBox_Find_Mark";
             this.TextBox_Find_Mark.Size = new System.Drawing.Size(107, 20);
             this.TextBox_Find_Mark.TabIndex = 4;
+            this.TextBox_Find_Mark.Click += new System.EventHandler(this.TextBox_Find_Mark_Click);
+            this.TextBox_Find_Mark.TextChanged += new System.EventHandler(this.TextBox_Find_Mark_TextChanged);
+            this.TextBox_Find_Mark.Enter += new System.EventHandler(this.TextBox_Find_Mark_Enter);
             // 
             // ListBox_List_Mark
             // 
@@ -76,7 +82,9 @@
             this.ListBox_List_Mark.Location = new System.Drawing.Point(165, 65);
             this.ListBox_List_Mark.Name = "ListBox_List_Mark";
             this.ListBox_List_Mark.Size = new System.Drawing.Size(107, 95);
+            this.ListBox_List_Mark.Sorted = true;
             this.ListBox_List_Mark.TabIndex = 5;
+            this.ListBox_List_Mark.SelectedIndexChanged += new System.EventHandler(this.ListBox_List_Mark_SelectedIndexChanged);
             // 
             // Button_Add_Subject
             // 
@@ -86,6 +94,7 @@
             this.Button_Add_Subject.TabIndex = 6;
             this.Button_Add_Subject.Text = "&Add Subject";
             this.Button_Add_Subject.UseVisualStyleBackColor = true;
+            this.Button_Add_Subject.Click += new System.EventHandler(this.Button_Add_Subject_Click);
             // 
             // Button_Save
             // 
@@ -95,6 +104,7 @@
             this.Button_Save.TabIndex = 7;
             this.Button_Save.Text = "&Save";
             this.Button_Save.UseVisualStyleBackColor = true;
+            this.Button_Save.Click += new System.EventHandler(this.Button_Save_Click);
             // 
             // ListBox_List_Subjects
             // 
@@ -102,10 +112,13 @@
             this.ListBox_List_Subjects.Location = new System.Drawing.Point(13, 65);
             this.ListBox_List_Subjects.Name = "ListBox_List_Subjects";
             this.ListBox_List_Subjects.Size = new System.Drawing.Size(141, 186);
+            this.ListBox_List_Subjects.Sorted = true;
             this.ListBox_List_Subjects.TabIndex = 2;
+            this.ListBox_List_Subjects.SelectedIndexChanged += new System.EventHandler(this.ListBox_List_Subjects_SelectedIndexChanged);
             // 
             // AddSubjectAndMarkForStudent
             // 
+            this.AcceptButton = this.Button_Add_Subject;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
@@ -122,7 +135,9 @@
             this.MaximumSize = new System.Drawing.Size(300, 300);
             this.MinimumSize = new System.Drawing.Size(300, 300);
             this.Name = "AddSubjectAndMarkForStudent";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Add Subject And Mark For Student";
+            this.Load += new System.EventHandler(this.AddSubjectAndMarkForStudent_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
