@@ -151,8 +151,8 @@ namespace Students
         private void Button_Delete_Subject_Click(object sender, EventArgs e)
         {
             int selected = ListBox_All_Subjects.SelectedIndex;
-            m_Subjects.deleteCurrentNode();
             string str = ListBox_All_Subjects.Items[selected].ToString();
+            m_Subjects.deleteElement(str);
             ListBox_All_Subjects.Items.RemoveAt(selected);
             CommonFunctions.corrctHScrlDel(ListBox_All_Subjects, str, ref m_MaxExtSubjectList);
             m_Subjects.setStart();

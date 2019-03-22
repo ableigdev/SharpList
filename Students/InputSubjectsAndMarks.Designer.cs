@@ -128,6 +128,7 @@
             this.ListBox_All_Subjects.Location = new System.Drawing.Point(13, 120);
             this.ListBox_All_Subjects.Name = "ListBox_All_Subjects";
             this.ListBox_All_Subjects.Size = new System.Drawing.Size(258, 160);
+            this.ListBox_All_Subjects.Sorted = true;
             this.ListBox_All_Subjects.TabIndex = 8;
             this.ListBox_All_Subjects.SelectedIndexChanged += new System.EventHandler(this.ListBox_All_Subjects_SelectedIndexChanged);
             // 
@@ -137,6 +138,7 @@
             this.ListBox_All_Marks.Location = new System.Drawing.Point(277, 120);
             this.ListBox_All_Marks.Name = "ListBox_All_Marks";
             this.ListBox_All_Marks.Size = new System.Drawing.Size(93, 160);
+            this.ListBox_All_Marks.Sorted = true;
             this.ListBox_All_Marks.TabIndex = 9;
             this.ListBox_All_Marks.SelectedIndexChanged += new System.EventHandler(this.ListBox_All_Marks_SelectedIndexChanged);
             // 
@@ -146,7 +148,7 @@
             this.Button_Save_Subjects.Name = "Button_Save_Subjects";
             this.Button_Save_Subjects.Size = new System.Drawing.Size(112, 23);
             this.Button_Save_Subjects.TabIndex = 10;
-            this.Button_Save_Subjects.Text = "&Save";
+            this.Button_Save_Subjects.Text = "S&ave";
             this.Button_Save_Subjects.UseVisualStyleBackColor = true;
             this.Button_Save_Subjects.Click += new System.EventHandler(this.Button_Save_Subjects_Click);
             // 
@@ -178,7 +180,7 @@
             this.TextBox_Input_Mark.Mask = "0.00";
             this.TextBox_Input_Mark.Name = "TextBox_Input_Mark";
             this.TextBox_Input_Mark.Size = new System.Drawing.Size(194, 20);
-            this.TextBox_Input_Mark.TabIndex = 13;
+            this.TextBox_Input_Mark.TabIndex = 4;
             // 
             // InputSubjectsAndMarks
             // 
@@ -195,6 +197,7 @@
             this.Controls.Add(this.Label_All_Marks);
             this.Controls.Add(this.Label_All_Subjects);
             this.Controls.Add(this.GroupBox_Add_Data);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(398, 361);
             this.MinimumSize = new System.Drawing.Size(398, 361);
