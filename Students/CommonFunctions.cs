@@ -40,5 +40,15 @@ namespace Students
             edit.Focus();
             edit.SelectAll();
         }
+
+        public static string getStudentString(Student student)
+        {
+            string str = student.surname + " " + student.name.Substring(0, 1) + ". ";
+            if (student.lastname.Length > 0)
+            {
+                str += student.lastname.Substring(0, 1) + ".";
+            }
+            return str;
+        }
     }
 }
