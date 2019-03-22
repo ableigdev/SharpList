@@ -112,6 +112,7 @@
             this.Name = "ShowSubjectsAndMarks";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Show Subjects And Marks";
+            this.Load += new System.EventHandler(this.ShowSubjectsAndMarks_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

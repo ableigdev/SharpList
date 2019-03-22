@@ -103,7 +103,8 @@ namespace Students
 
         private void Button_Delete_Subjects_In_Show_Window_Click(object sender, EventArgs e)
         {
-            m_RecordBook.deleteCurrentNode();
+            var record = m_RecordBook.currentData;
+            m_RecordBook.deleteElement(record);
             int subjectIndex = ListBox_Subjects_In_Show_Window.SelectedIndex;
             int markIndex = ListBox_Marks_In_Show_Window.SelectedIndex;
             string tempSubject = ListBox_Subjects_In_Show_Window.Items[subjectIndex].ToString();
@@ -118,10 +119,47 @@ namespace Students
             Button_Delete_Subjects_In_Show_Window.Enabled = false;
             if (!m_RecordBook.isNotEmpty())
             {
-                TextBox_Find_Subject_In_Show_Window.Enabled = false;
-                ListBox_Subjects_In_Show_Window.Enabled = false;
-                ListBox_Marks_In_Show_Window.Enabled = false;
+                enableControls(false);
             }
+        }
+
+        private void ShowSubjectsAndMarks_Load(object sender, EventArgs e)
+        {
+            ListBox_Marks_In_Show_Window.Items.Clear();
+            ListBox_Subjects_In_Show_Window.Items.Clear();
+            m_OldMarkSelect = -1;
+            m_OldSubjectSelect = -1;
+
+            if (m_RecordBook.isNotEmpty())
+            {
+                enableControlsWithoutDeleteButton(true);
+                for (int i = 0; i < m_RecordBook.size; ++i, ++m_RecordBook)
+                {
+                    string tempSubject = m_RecordBook.currentData.m_Subject;
+                    string tempMark = m_RecordBook.currentData.m_Mark.ToString();
+                    ListBox_Subjects_In_Show_Window.Items.Add(tempSubject);
+                    CommonFunctions.correctHScrlAdd(ListBox_Subjects_In_Show_Window, tempSubject, ref m_MaxExtSubject);
+                    ListBox_Marks_In_Show_Window.Items.Add(tempMark);
+                    CommonFunctions.correctHScrlAdd(ListBox_Marks_In_Show_Window, tempMark, ref m_MaxExtMark);
+                }
+            }
+            else
+            {
+                enableControls(false);
+            }
+        }
+
+        private void enableControls(bool flag)
+        {
+            enableControlsWithoutDeleteButton(flag);
+            Button_Delete_Subjects_In_Show_Window.Enabled = flag;
+        }
+
+        private void enableControlsWithoutDeleteButton(bool flag)
+        {
+            TextBox_Find_Subject_In_Show_Window.Enabled = flag;
+            ListBox_Marks_In_Show_Window.Enabled = flag;
+            ListBox_Subjects_In_Show_Window.Enabled = flag;
         }
     }
 }
