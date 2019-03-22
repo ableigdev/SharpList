@@ -92,7 +92,8 @@
       <DependentUpon>AddSubjectAndMarkForStudent.cs</DependentUpon>
     </Compile>
     <Compile Include="Common.cs" />
-    <Compile Include="CommonCorrectScroll.cs" />
+    <Compile Include="CommonFunctions.cs" />
+    <Compile Include="CommonPair.cs" />
     <Compile Include="InputName.cs">
       <SubType>Form</SubType>
     </Compile>
