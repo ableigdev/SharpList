@@ -16,6 +16,9 @@ namespace Students
         private InputStudent m_InputStudInfo;
         private SelectAction m_SelectAction;
         private InputSubjectsAndMarks m_InputSubjects;
+        private ShowSubjectsAndMarks m_ShowSubjectsAndMarks;
+        private InputSubjectsAndMarks m_InputSubjectsAndMarks;
+        private AddSubjectAndMarkForStudent m_AddSubjectAndMark;
         private NameList<NameList<Student>> m_Faculty;
         private NameList<Student> m_CurrentGroup;
         private Student m_CurrentStudent;
@@ -32,6 +35,9 @@ namespace Students
             m_InputStudInfo = new InputStudent();
             m_SelectAction = new SelectAction();
             m_InputSubjects = new InputSubjectsAndMarks();
+            m_ShowSubjectsAndMarks = new ShowSubjectsAndMarks();
+            m_InputSubjectsAndMarks = new InputSubjectsAndMarks();
+            m_AddSubjectAndMark = new AddSubjectAndMarkForStudent();
             m_Faculty = new NameList<NameList<Student>>();
         }
 
@@ -210,24 +216,15 @@ namespace Students
                 setSelectedActions(true);
                 Button_Delete_All_Students_In_Group.Enabled = m_Faculty.currentData.isNotEmpty();
             }
+            Button_Add_Subjects_And_Marks.Enabled = false;
+            Button_Get_Students_Subjects.Enabled = false;
         }
 
         private void showString(Student student)
         {
-            var str = getStudentString(student);
+            var str = CommonFunctions.getStudentString(student);
             ListBox_List_Students.Items.Add(str);
             CommonFunctions.correctHScrlAdd(ListBox_List_Students, str, ref m_MaxExtListStud);
-        }
-
-        // TODO: Add to common
-        private string getStudentString(Student student)
-        {
-            string str = student.surname + " " + student.name.Substring(0, 1) + ". ";
-            if (student.lastname.Length > 0)
-            {
-                str += student.lastname.Substring(0, 1) + ".";
-            }
-            return str;
         }
 
         private void showStudent()
@@ -370,14 +367,15 @@ namespace Students
         private void disableSubjectsButton()
         {
             Button_Get_Students_Subjects.Enabled = false;
-            Button_Input_Subjects_And_Marks.Enabled = false;
+            Button_Add_Subjects_And_Marks.Enabled = false;
         }
 
         private void deleteSelectedStudent()
         {
             int select = getStudentSelect();
             // TODO: Check it! Be careful!
-            m_CurrentGroup.deleteCurrentNode();
+            m_CurrentStudent = m_CurrentGroup.currentData;
+            m_CurrentGroup.deleteElement(m_CurrentStudent);
             if (m_CurrentGroup.isNotEmpty())
             {
                 m_CurrentGroup.setStart();
@@ -400,7 +398,7 @@ namespace Students
             }
             else if (ListBox_List_Students.Items.Count >= 0)
             {
-                ListBox_List_Students.SelectedIndex = 0;
+                ListBox_List_Students.SelectedIndex = -1;
                 // TODO: Check it!
                 //ListBox_List_Students_SelectedIndexChanged(this, null);
             }
@@ -417,8 +415,10 @@ namespace Students
                 m_CurrentStudent = m_CurrentGroup.currentData;
                 showStudentInformation(m_CurrentStudent);
                 setSelectedActions(true);
-                // TODO: Add InputSubject actions
+                Button_Add_Subjects_And_Marks.Enabled = m_InputSubjects.listOfTheMarks.isNotEmpty() && m_InputSubjects.listOfTheSubjects.isNotEmpty();
+                Button_Get_Students_Subjects.Enabled = m_CurrentStudent.recordBook.isNotEmpty();
             }
+            Button_Add_Subjects_And_Marks.Enabled = true;
         }
 
         private void deleteSelectedGroup()
@@ -427,7 +427,8 @@ namespace Students
             setSelectedActions(false);
             Button_Delete_All_Students_In_Group.Enabled = false;
             // TODO: Check it
-            m_Faculty.deleteCurrentNode();
+            m_CurrentGroup = m_Faculty.currentData;
+            m_Faculty.deleteElement(m_CurrentGroup);
             if (m_Faculty.isNotEmpty())
             {
                 m_Faculty.setStart();
@@ -539,7 +540,7 @@ namespace Students
                 m_Faculty.sort();
                 //ListBox_List_Groups.Items.RemoveAt(getGroupSelect());
                 int select = changeItem(ListBox_List_Groups, ref m_MaxExtListGroup, m_CurrentGroup.nameList);
-                int selectStudent = m_CurrentStudent != null && m_CurrentGroup.findValue(m_CurrentStudent) ? changeItem(ListBox_List_Students, ref m_MaxExtListStud, getStudentString(m_CurrentStudent)) : -1;
+                int selectStudent = m_CurrentStudent != null && m_CurrentGroup.findValue(m_CurrentStudent) ? changeItem(ListBox_List_Students, ref m_MaxExtListStud, CommonFunctions.getStudentString(m_CurrentStudent)) : -1;
                 showGroups();
                 ListBox_List_Groups.SelectedIndex = select;
                 //ListBox_List_Groups_SelectedIndexChanged(this, null);
@@ -562,7 +563,7 @@ namespace Students
                 // TODO: Remake it!
                 m_CurrentGroup.sort();
                 ListBox_List_Students.Items.RemoveAt(getStudentSelect());
-                int select = changeItem(ListBox_List_Students, ref m_MaxExtListStud, getStudentString(m_CurrentStudent));
+                int select = changeItem(ListBox_List_Students, ref m_MaxExtListStud, CommonFunctions.getStudentString(m_CurrentStudent));
                 showStudent();
                 ListBox_List_Students.SelectedIndex = select;
                 ListBox_List_Students_SelectedIndexChanged(this, null);
@@ -605,6 +606,29 @@ namespace Students
         private void Button_Input_Subjects_And_Marks_Click(object sender, EventArgs e)
         {
             m_InputSubjects.ShowDialog();
+        }
+
+        private void Button_Add_Subjects_And_Marks_Click(object sender, EventArgs e)
+        {
+            m_AddSubjectAndMark.marks = m_InputSubjects.listOfTheMarks;
+            m_AddSubjectAndMark.subjects = m_InputSubjects.listOfTheSubjects;
+            m_AddSubjectAndMark.student = m_CurrentStudent;
+            m_AddSubjectAndMark.ShowDialog();
+            Button_Get_Students_Subjects.Enabled = true;
+        }
+
+        private void Button_Get_Students_Subjects_Click(object sender, EventArgs e)
+        {
+            m_ShowSubjectsAndMarks.recordBook = m_CurrentStudent.recordBook;
+            m_ShowSubjectsAndMarks.student = m_CurrentStudent;
+            m_ShowSubjectsAndMarks.ShowDialog();
+            m_CurrentStudent = m_ShowSubjectsAndMarks.student;
+        }
+
+        private void Button_Exit_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.OK;
+            Close();
         }
     }
 }

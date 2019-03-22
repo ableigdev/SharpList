@@ -82,6 +82,7 @@
             this.Button_Add_Subjects_And_Marks.TabIndex = 7;
             this.Button_Add_Subjects_And_Marks.Text = "Add S&ubjects And Marks...";
             this.Button_Add_Subjects_And_Marks.UseVisualStyleBackColor = true;
+            this.Button_Add_Subjects_And_Marks.Click += new System.EventHandler(this.Button_Add_Subjects_And_Marks_Click);
             // 
             // Button_Get_Students_Subjects
             // 
@@ -92,6 +93,7 @@
             this.Button_Get_Students_Subjects.TabIndex = 6;
             this.Button_Get_Students_Subjects.Text = "&Get Students Subjects...";
             this.Button_Get_Students_Subjects.UseVisualStyleBackColor = true;
+            this.Button_Get_Students_Subjects.Click += new System.EventHandler(this.Button_Get_Students_Subjects_Click);
             // 
             // Button_Delete_All_Groups
             // 
@@ -177,6 +179,7 @@
             this.Button_Exit.TabIndex = 9;
             this.Button_Exit.Text = "E&xit";
             this.Button_Exit.UseVisualStyleBackColor = true;
+            this.Button_Exit.Click += new System.EventHandler(this.Button_Exit_Click);
             // 
             // Label_Group_List
             // 
@@ -206,6 +209,7 @@
             this.ListBox_List_Groups.Location = new System.Drawing.Point(222, 66);
             this.ListBox_List_Groups.Name = "ListBox_List_Groups";
             this.ListBox_List_Groups.Size = new System.Drawing.Size(120, 264);
+            this.ListBox_List_Groups.Sorted = true;
             this.ListBox_List_Groups.TabIndex = 12;
             this.ListBox_List_Groups.SelectedIndexChanged += new System.EventHandler(this.ListBox_List_Groups_SelectedIndexChanged);
             // 
@@ -237,6 +241,7 @@
             this.ListBox_List_Students.Location = new System.Drawing.Point(357, 66);
             this.ListBox_List_Students.Name = "ListBox_List_Students";
             this.ListBox_List_Students.Size = new System.Drawing.Size(177, 264);
+            this.ListBox_List_Students.Sorted = true;
             this.ListBox_List_Students.TabIndex = 15;
             this.ListBox_List_Students.SelectedIndexChanged += new System.EventHandler(this.ListBox_List_Students_SelectedIndexChanged);
             // 
