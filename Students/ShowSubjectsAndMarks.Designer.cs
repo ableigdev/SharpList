@@ -51,6 +51,9 @@
             this.TextBox_Find_Subject_In_Show_Window.Name = "TextBox_Find_Subject_In_Show_Window";
             this.TextBox_Find_Subject_In_Show_Window.Size = new System.Drawing.Size(283, 20);
             this.TextBox_Find_Subject_In_Show_Window.TabIndex = 1;
+            this.TextBox_Find_Subject_In_Show_Window.Click += new System.EventHandler(this.TextBox_Find_Subject_In_Show_Window_Click);
+            this.TextBox_Find_Subject_In_Show_Window.TextChanged += new System.EventHandler(this.TextBox_Find_Subject_In_Show_Window_TextChanged);
+            this.TextBox_Find_Subject_In_Show_Window.Enter += new System.EventHandler(this.TextBox_Find_Subject_In_Show_Window_Enter);
             // 
             // ListBox_Subjects_In_Show_Window
             // 
@@ -59,6 +62,7 @@
             this.ListBox_Subjects_In_Show_Window.Name = "ListBox_Subjects_In_Show_Window";
             this.ListBox_Subjects_In_Show_Window.Size = new System.Drawing.Size(193, 160);
             this.ListBox_Subjects_In_Show_Window.TabIndex = 2;
+            this.ListBox_Subjects_In_Show_Window.SelectedIndexChanged += new System.EventHandler(this.ListBox_Subjects_In_Show_Window_SelectedIndexChanged);
             // 
             // ListBox_Marks_In_Show_Window
             // 
@@ -67,6 +71,7 @@
             this.ListBox_Marks_In_Show_Window.Name = "ListBox_Marks_In_Show_Window";
             this.ListBox_Marks_In_Show_Window.Size = new System.Drawing.Size(84, 160);
             this.ListBox_Marks_In_Show_Window.TabIndex = 3;
+            this.ListBox_Marks_In_Show_Window.SelectedIndexChanged += new System.EventHandler(this.ListBox_Marks_In_Show_Window_SelectedIndexChanged);
             // 
             // Button_Exit_From_Show_Window
             // 
@@ -76,6 +81,7 @@
             this.Button_Exit_From_Show_Window.TabIndex = 4;
             this.Button_Exit_From_Show_Window.Text = "&Exit";
             this.Button_Exit_From_Show_Window.UseVisualStyleBackColor = true;
+            this.Button_Exit_From_Show_Window.Click += new System.EventHandler(this.Button_Exit_From_Show_Window_Click);
             // 
             // Button_Delete_Subjects_In_Show_Window
             // 
@@ -85,6 +91,7 @@
             this.Button_Delete_Subjects_In_Show_Window.TabIndex = 5;
             this.Button_Delete_Subjects_In_Show_Window.Text = "&Delete";
             this.Button_Delete_Subjects_In_Show_Window.UseVisualStyleBackColor = true;
+            this.Button_Delete_Subjects_In_Show_Window.Click += new System.EventHandler(this.Button_Delete_Subjects_In_Show_Window_Click);
             // 
             // ShowSubjectsAndMarks
             // 
