@@ -10,6 +10,7 @@ namespace Students
     {
         public Student()
         {
+            m_RecordBook = new List<CommonPair>();
         }
 
         public string name
@@ -204,10 +205,40 @@ namespace Students
             return newStudent;
         }
 
+        public List<CommonPair> recordBook
+        {
+            get
+            {
+                return m_RecordBook;
+            }
+        }
+
+        public void setRecordBookPair(string subject, float valueOfTheMark)
+        {
+            bool flag = false;
+            if (m_RecordBook.isNotEmpty())
+            {
+                for (int i = 0; i < m_RecordBook.size; ++i, ++m_RecordBook)
+                {
+                    if (m_RecordBook.currentData.m_Subject.CompareTo(subject) == 0)
+                    {
+                        m_RecordBook.currentData.m_Mark = valueOfTheMark;
+                        flag = true;
+                        break;
+                    }
+                }
+            }
+            if (!flag)
+            {
+                m_RecordBook.pushBack(new CommonPair(subject, valueOfTheMark));
+            }
+        }
+
         private string m_Name;
         private string m_Surname;
         private string m_LastName;
         private short m_BirthYear;
         private float m_Mark;
+        private List<CommonPair> m_RecordBook;
     }
 }
