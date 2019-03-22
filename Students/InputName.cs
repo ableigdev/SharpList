@@ -72,20 +72,14 @@ namespace Students
             }
         }
 
-        private void activeEdit(TextBoxBase edit)
-        {
-            edit.Focus();
-            edit.SelectAll();
-        }
-
         private void TextBox_New_Name_Enter(object sender, EventArgs e)
         {
-            activeEdit(TextBox_New_Name);
+            CommonFunctions.activeEdit(TextBox_New_Name);
         }
 
         private void TextBox_New_Name_Click(object sender, EventArgs e)
         {
-            activeEdit(TextBox_New_Name);
+            CommonFunctions.activeEdit(TextBox_New_Name);
         }
     }
 }

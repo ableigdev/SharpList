@@ -77,7 +77,7 @@ namespace Students
 
         private void setActiveSurname()
         {
-            activeEdit(TextBox_Surname);
+            CommonFunctions.activeEdit(TextBox_Surname);
         }
 
         private bool checkConstruction()
@@ -230,60 +230,54 @@ namespace Students
             Close();
         }
 
-        private void activeEdit(TextBoxBase edit)
-        {
-            edit.Focus();
-            edit.SelectAll();
-        }
-
         private void TextBox_Surname_Enter(object sender, EventArgs e)
         {
-            activeEdit(TextBox_Surname);
+            CommonFunctions.activeEdit(TextBox_Surname);
         }
 
         private void TextBox_Surname_Click(object sender, EventArgs e)
         {
-            activeEdit(TextBox_Surname);
+            CommonFunctions.activeEdit(TextBox_Surname);
         }
 
         private void TextBox_Name_Click(object sender, EventArgs e)
         {
-            activeEdit(TextBox_Name);
+            CommonFunctions.activeEdit(TextBox_Name);
         }
 
         private void TextBox_Name_Enter(object sender, EventArgs e)
         {
-            activeEdit(TextBox_Name);
+            CommonFunctions.activeEdit(TextBox_Name);
         }
 
         private void TextBox_Lastname_Enter(object sender, EventArgs e)
         {
-            activeEdit(TextBox_Lastname);
+            CommonFunctions.activeEdit(TextBox_Lastname);
         }
 
         private void TextBox_Lastname_Click(object sender, EventArgs e)
         {
-            activeEdit(TextBox_Lastname);
+            CommonFunctions.activeEdit(TextBox_Lastname);
         }
 
         private void TextBox_Birth_Year_Enter(object sender, EventArgs e)
         {
-            activeEdit(TextBox_Birth_Year);
+            CommonFunctions.activeEdit(TextBox_Birth_Year);
         }
 
         private void TextBox_Birth_Year_Click(object sender, EventArgs e)
         {
-            activeEdit(TextBox_Birth_Year);
+            CommonFunctions.activeEdit(TextBox_Birth_Year);
         }
 
         private void TextBox_Average_Mark_Enter(object sender, EventArgs e)
         {
-            activeEdit(TextBox_Average_Mark);
+            CommonFunctions.activeEdit(TextBox_Average_Mark);
         }
 
         private void TextBox_Average_Mark_Click(object sender, EventArgs e)
         {
-            activeEdit(TextBox_Average_Mark);
+            CommonFunctions.activeEdit(TextBox_Average_Mark);
         }
     }
 }

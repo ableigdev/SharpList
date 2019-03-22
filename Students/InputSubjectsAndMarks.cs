@@ -26,12 +26,6 @@ namespace Students
             m_Marks = new List<float>();
         }
 
-        private void activeEdit(TextBoxBase edit)
-        {
-            edit.Focus();
-            edit.SelectAll();
-        }
-
         private void Button_Add_Mark_Click(object sender, EventArgs e)
         {
             float mark;
@@ -43,7 +37,7 @@ namespace Students
                     {
                         m_Marks.pushInSortList(mark);
                         ListBox_All_Marks.Items.Add(mark);
-                        CommonCorrectScroll.correctHScrlAdd(ListBox_All_Marks, TextBox_Input_Mark.Text, ref m_MaxExtMarkList);
+                        CommonFunctions.correctHScrlAdd(ListBox_All_Marks, TextBox_Input_Mark.Text, ref m_MaxExtMarkList);
                     }
                     else
                     {
@@ -59,7 +53,7 @@ namespace Students
             {
                 MessageBox.Show("Mark field is empty!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            activeEdit(TextBox_Input_Mark);
+            CommonFunctions.activeEdit(TextBox_Input_Mark);
         }
 
         private void Button_Add_Subject_Click(object sender, EventArgs e)
@@ -72,7 +66,7 @@ namespace Students
                 {
                     m_Subjects.pushInSortList(str);
                     ListBox_All_Subjects.Items.Add(str);
-                    CommonCorrectScroll.correctHScrlAdd(ListBox_All_Subjects, str, ref m_MaxExtSubjectList);
+                    CommonFunctions.correctHScrlAdd(ListBox_All_Subjects, str, ref m_MaxExtSubjectList);
                 }
                 else
                 {
@@ -83,7 +77,7 @@ namespace Students
             {
                 MessageBox.Show("You can't input the empty string!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            activeEdit(TextBox_Input_Subject);
+            CommonFunctions.activeEdit(TextBox_Input_Subject);
         }
 
         private void InputSubjectsAndMarks_Load(object sender, EventArgs e)
@@ -101,7 +95,7 @@ namespace Students
                 {
                     var str = m_Subjects.currentData;
                     ListBox_All_Subjects.Items.Add(str);
-                    CommonCorrectScroll.correctHScrlAdd(ListBox_All_Subjects, str, ref m_MaxExtSubjectList);
+                    CommonFunctions.correctHScrlAdd(ListBox_All_Subjects, str, ref m_MaxExtSubjectList);
                 }
                 m_Subjects.setStart();
             }
@@ -112,7 +106,7 @@ namespace Students
                 {
                     var mark = m_Marks.currentData;
                     ListBox_All_Marks.Items.Add(mark);
-                    CommonCorrectScroll.correctHScrlAdd(ListBox_All_Marks, mark.ToString(), ref m_MaxExtMarkList);
+                    CommonFunctions.correctHScrlAdd(ListBox_All_Marks, mark.ToString(), ref m_MaxExtMarkList);
                 }
                 m_Marks.setStart();
             }
@@ -160,7 +154,7 @@ namespace Students
             m_Subjects.deleteCurrentNode();
             string str = ListBox_All_Subjects.Items[selected].ToString();
             ListBox_All_Subjects.Items.RemoveAt(selected);
-            CommonCorrectScroll.corrctHScrlDel(ListBox_All_Subjects, str, ref m_MaxExtSubjectList);
+            CommonFunctions.corrctHScrlDel(ListBox_All_Subjects, str, ref m_MaxExtSubjectList);
             m_Subjects.setStart();
             Button_Delete_Subject.Enabled = false;
         }
@@ -172,7 +166,7 @@ namespace Students
             m_Marks.deleteElement(tempValue);
             string str = ListBox_All_Marks.Items[selected].ToString();
             ListBox_All_Marks.Items.RemoveAt(selected);
-            CommonCorrectScroll.corrctHScrlDel(ListBox_All_Marks, str, ref m_MaxExtMarkList);
+            CommonFunctions.corrctHScrlDel(ListBox_All_Marks, str, ref m_MaxExtMarkList);
             m_Marks.setStart();
             Button_Delete_Mark.Enabled = false;
         }

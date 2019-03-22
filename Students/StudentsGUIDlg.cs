@@ -113,7 +113,7 @@ namespace Students
         private void showString(NameList<Student> group)
         {
             ListBox_List_Groups.Items.Add(group.nameList);
-            CommonCorrectScroll.correctHScrlAdd(ListBox_List_Groups, group.nameList, ref m_MaxExtListGroup);
+            CommonFunctions.correctHScrlAdd(ListBox_List_Groups, group.nameList, ref m_MaxExtListGroup);
         }
 
         private void showGroups()
@@ -216,7 +216,7 @@ namespace Students
         {
             var str = getStudentString(student);
             ListBox_List_Students.Items.Add(str);
-            CommonCorrectScroll.correctHScrlAdd(ListBox_List_Students, str, ref m_MaxExtListStud);
+            CommonFunctions.correctHScrlAdd(ListBox_List_Students, str, ref m_MaxExtListStud);
         }
 
         // TODO: Add to common
@@ -306,7 +306,7 @@ namespace Students
             int currentSelect = listBox.SelectedIndex;
             // TODO: Correct scroller
             // TODO: Check it!
-            CommonCorrectScroll.corrctHScrlDel(listBox, listBox.Items[currentSelect].ToString(), ref maxExtCx);
+            CommonFunctions.corrctHScrlDel(listBox, listBox.Items[currentSelect].ToString(), ref maxExtCx);
 
             if (currentSelect != 0)
             {
@@ -323,10 +323,10 @@ namespace Students
             if (currentSelect != ListBox.NoMatches)
             {
                 // TODO: correct scroller and check it
-                CommonCorrectScroll.corrctHScrlDel(listBox, listBox.Items[currentSelect].ToString(), ref maxExtCx);
+                CommonFunctions.corrctHScrlDel(listBox, listBox.Items[currentSelect].ToString(), ref maxExtCx);
                 listBox.Items.RemoveAt(currentSelect);
                 listBox.SelectedIndex = (currentSelect = listBox.Items.Add(name));
-                CommonCorrectScroll.correctHScrlAdd(listBox, listBox.Items[currentSelect].ToString(), ref maxExtCx);
+                CommonFunctions.correctHScrlAdd(listBox, listBox.Items[currentSelect].ToString(), ref maxExtCx);
             }
             return currentSelect;
         }
