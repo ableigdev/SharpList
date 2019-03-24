@@ -95,6 +95,9 @@
     <Compile Include="Common.cs" />
     <Compile Include="CommonFunctions.cs" />
     <Compile Include="CommonPair.cs" />
+    <Compile Include="FileBase.cs" />
+    <Compile Include="FileProcess.cs" />
+    <Compile Include="FileSimple.cs" />
     <Compile Include="InputName.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -115,6 +118,7 @@
     </Compile>
     <Compile Include="Iterator.cs" />
     <Compile Include="List.cs" />
+    <Compile Include="ListInter.cs" />
     <Compile Include="NameList.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -131,6 +135,7 @@
     <Compile Include="ShowSubjectsAndMarks.Designer.cs">
       <DependentUpon>ShowSubjectsAndMarks.cs</DependentUpon>
     </Compile>
+    <Compile Include="StructureInterface.cs" />
     <Compile Include="Student.cs" />
     <Compile Include="StudentsGUIDlg.cs">
       <SubType>Form</SubType>
