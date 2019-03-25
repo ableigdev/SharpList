@@ -562,7 +562,7 @@ namespace Students
                 m_CurrentGroup.currentData = m_CurrentStudent = m_InputStudInfo.student;
                 // TODO: Remake it!
                 m_CurrentGroup.sort();
-                ListBox_List_Students.Items.RemoveAt(getStudentSelect());
+                //ListBox_List_Students.Items.RemoveAt(getStudentSelect());
                 int select = changeItem(ListBox_List_Students, ref m_MaxExtListStud, CommonFunctions.getStudentString(m_CurrentStudent));
                 showStudent();
                 ListBox_List_Students.SelectedIndex = select;

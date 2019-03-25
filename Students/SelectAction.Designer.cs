@@ -44,7 +44,7 @@
             // 
             // Button_Student
             // 
-            this.Button_Student.Location = new System.Drawing.Point(163, 12);
+            this.Button_Student.Location = new System.Drawing.Point(263, 12);
             this.Button_Student.Name = "Button_Student";
             this.Button_Student.Size = new System.Drawing.Size(75, 23);
             this.Button_Student.TabIndex = 1;
@@ -57,13 +57,13 @@
             this.AcceptButton = this.Button_Student;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(250, 52);
+            this.ClientSize = new System.Drawing.Size(350, 52);
             this.Controls.Add(this.Button_Student);
             this.Controls.Add(this.Button_Group);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(266, 91);
-            this.MinimumSize = new System.Drawing.Size(266, 91);
+            this.MaximumSize = new System.Drawing.Size(366, 91);
+            this.MinimumSize = new System.Drawing.Size(366, 91);
             this.Name = "SelectAction";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Select Action";

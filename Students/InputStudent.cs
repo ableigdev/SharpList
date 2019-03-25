@@ -115,6 +115,7 @@ namespace Students
                 m_Student = (Student)m_WorkStudent.Clone();
                 m_IsModify = true;
                 this.Text = "Input Student Information";
+                this.AcceptButton = Button_Next;
             }
 
             // Change mode
@@ -128,6 +129,7 @@ namespace Students
                 m_WorkStudent = m_Student;
                 m_IsModify = false;
                 this.Text = "Change Student Information";
+                this.AcceptButton = Button_OK;
             }
 
             setActiveSurname();
@@ -142,6 +144,11 @@ namespace Students
                 }
                 ComboBox_Groups.SelectedIndex = m_CurrentGroupIndex != -1 ? m_CurrentGroupIndex : 0;
             }
+        }
+
+        private void setActiveControl(TextBoxBase edit)
+        {
+            this.ActiveControl = edit;
         }
 
         private bool readDataFromControls()
@@ -166,11 +173,13 @@ namespace Students
                     }
                     else
                     {
+                        setActiveControl(TextBox_Birth_Year);
                         return showMessageHelper("Value of years must be from 1900 to 2100");
                     }
                 }
                 else
                 {
+                    setActiveControl(TextBox_Birth_Year);
                     return showMessageHelper("Birth Year field is empty!");
                 }
 
@@ -183,11 +192,13 @@ namespace Students
                     }
                     else
                     {
+                        setActiveControl(TextBox_Average_Mark);
                         return showMessageHelper("Value of marks must be from 0.0 to 5.0");
                     }
                 }
                 else
                 {
+                    setActiveControl(TextBox_Average_Mark);
                     return showMessageHelper("Mark field is empty!");
                 }
                 return true;
