@@ -337,6 +337,7 @@
             this.Controls.Add(this.Button_Exit);
             this.Controls.Add(this.Button_Input_Subjects_And_Marks);
             this.Controls.Add(this.GroupBox_Actions);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(736, 380);
             this.MinimumSize = new System.Drawing.Size(736, 380);
