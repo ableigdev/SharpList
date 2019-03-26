@@ -411,7 +411,7 @@ namespace Students
             if (selected != -1 && selected != m_OldStudSelect)
             {
                 Iterator<Student> iter = new Iterator<Student>(m_CurrentGroup);
-                Common<Student>.for_each_listbox(iter, ListBox_List_Groups, ref m_OldStudSelect, ref selected);
+                Common<Student>.for_each_listbox(iter, ListBox_List_Students, ref m_OldStudSelect, ref selected);
                 m_CurrentStudent = m_CurrentGroup.currentData;
                 showStudentInformation(m_CurrentStudent);
                 setSelectedActions(true);
@@ -629,6 +629,12 @@ namespace Students
         {
             DialogResult = DialogResult.OK;
             Close();
+        }
+
+        private void StudentsGUIDlg_Load(object sender, EventArgs e)
+        {
+            this.ActiveControl = GroupBox_Faculty_Actions;
+            this.AcceptButton = Button_Create_Faculty;
         }
     }
 }
