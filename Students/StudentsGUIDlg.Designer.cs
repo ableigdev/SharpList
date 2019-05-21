@@ -344,6 +344,7 @@
             this.Name = "StudentsGUIDlg";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "StudentsGUIDlg";
+            this.Load += new System.EventHandler(this.StudentsGUIDlg_Load);
             this.GroupBox_Actions.ResumeLayout(false);
             this.GroupBox_Faculty_Actions.ResumeLayout(false);
             this.ResumeLayout(false);

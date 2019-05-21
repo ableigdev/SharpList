@@ -109,6 +109,7 @@ namespace Students
             ComboBox_Groups.Items.Clear();
             Button_Next.Enabled = !m_ChangeFlag;
             ComboBox_Groups.Enabled = !m_ChangeFlag;
+            this.ActiveControl = TextBox_Surname;
             // Add mode
             if (!m_ChangeFlag)
             {
